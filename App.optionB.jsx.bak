@@ -1,0 +1,68 @@
+import { useEffect } from 'react'
+import { useSmoothScroll } from './lib/smoothScroll'
+import Nav from './components/Nav'
+import HeroScroll from './components/HeroScroll'
+import Stats from './components/Stats'
+import Problem from './components/Problem'
+import ParallaxBand from './components/ParallaxBand'
+import Capabilities from './components/Capabilities'
+import HowWeWork from './components/HowWeWork'
+import WhereAI from './components/WhereAI'
+import WontClaim from './components/WontClaim'
+import Investment from './components/Investment'
+import Team from './components/Team'
+import Contact from './components/Contact'
+import Footer from './components/Footer'
+
+export default function App() {
+  useSmoothScroll()
+
+  // Fade-up reveal for anything with .reveal (CSS handles reduced-motion).
+  useEffect(() => {
+    const els = document.querySelectorAll('.reveal')
+    const io = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('is-in')
+            io.unobserve(e.target)
+          }
+        })
+      },
+      { threshold: 0.15, rootMargin: '0px 0px -8% 0px' }
+    )
+    els.forEach((el) => io.observe(el))
+    return () => io.disconnect()
+  }, [])
+
+  return (
+    <>
+      <Nav />
+      <main>
+        <HeroScroll />
+        <Stats />
+        <Problem />
+        <ParallaxBand
+          img="/mining-before.png"
+          kicker="The cost of guessing"
+          title="When the machine stops, the whole plant waits."
+          align="left"
+        />
+        <Capabilities />
+        <HowWeWork />
+        <WhereAI />
+        <ParallaxBand
+          img="/mining-after.png"
+          kicker="The difference"
+          title="Prevention you can see — while there is still time to act."
+          align="right"
+        />
+        <WontClaim />
+        <Investment />
+        <Team />
+        <Contact />
+      </main>
+      <Footer />
+    </>
+  )
+}
