@@ -36,6 +36,11 @@ export default function Footer() {
           </div>
         </div>
 
+        <div className="footer__credit">
+          <span className="footer__crown">♛</span>
+          <span><b>Made by LWC Group Marketing</b> — Your partner in marketing design</span>
+        </div>
+
         <div className="footer__bottom">
           <span>&copy; {new Date().getFullYear()} LWC Group. All rights reserved.</span>
           <span>Advisory &amp; offline &mdash; we never write to your control systems.</span>

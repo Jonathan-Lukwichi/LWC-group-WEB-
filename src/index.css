@@ -284,3 +284,9 @@ h1, h2, h3, h4 { margin: 0; }
   .ba__after, .ba__after-content, .ba__metric { opacity:1 !important; }
   .ba__before-content { opacity:0 !important; }
 }
+
+/* LWC Group Marketing credit */
+.footer__credit { margin-top: 32px; padding: 18px 0; border-top: 1px solid var(--border, rgba(0,0,0,.1));
+  display: flex; align-items: center; justify-content: center; gap: 12px; text-align: center; font-size: 0.92rem; }
+.footer__credit b { color: var(--gold, #C8912E); font-weight: 600; }
+.footer__crown { color: var(--gold, #C8912E); font-size: 1.1rem; }
