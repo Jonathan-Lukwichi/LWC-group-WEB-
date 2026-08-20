@@ -1,38 +1,39 @@
 import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
-import { useSmoothScroll, scrollTop } from './lib/smoothScroll'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
-import Story from './pages/Story'
-import Details from './pages/Details'
+import Home from './pages/Home'
+import Division from './pages/Division'
 
-function ScrollToTop() {
-  const { pathname } = useLocation()
+// Scroll to top on page change; scroll to the anchor if the URL carries a hash.
+function ScrollManager() {
+  const { pathname, hash } = useLocation()
   useEffect(() => {
-    scrollTop()
-  }, [pathname])
+    if (hash) {
+      const el = document.querySelector(hash)
+      if (el) { el.scrollIntoView({ behavior: 'smooth' }); return }
+    }
+    window.scrollTo(0, 0)
+  }, [pathname, hash])
   return null
-}
-
-function Shell() {
-  useSmoothScroll()
-  return (
-    <>
-      <ScrollToTop />
-      <Nav />
-      <Routes>
-        <Route path="/" element={<Story />} />
-        <Route path="/services" element={<Details />} />
-      </Routes>
-      <Footer />
-    </>
-  )
 }
 
 export default function App() {
   return (
     <BrowserRouter>
-      <Shell />
+      <ScrollManager />
+      <Nav />
+      <main>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/engineering" element={<Division slug="engineering" />} />
+          <Route path="/intelligence" element={<Division slug="intelligence" />} />
+          <Route path="/digital" element={<Division slug="digital" />} />
+          <Route path="/academy" element={<Division slug="academy" />} />
+          <Route path="*" element={<Home />} />
+        </Routes>
+      </main>
+      <Footer />
     </BrowserRouter>
   )
 }

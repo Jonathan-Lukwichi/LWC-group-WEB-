@@ -1,11 +1,17 @@
 import { useEffect, useState } from 'react'
-import { Link, useLocation } from 'react-router-dom'
-import { brand } from '../data/content'
+import { Link } from 'react-router-dom'
+import { nav, brand } from '../data/content'
+
+const SERVICES = ['engineering', 'intelligence', 'digital', 'academy']
+// '#engineering' -> '/engineering' (own page); '#team' -> '/#team' (home section)
+const toPath = (href) => {
+  const key = href.replace('#', '')
+  return SERVICES.includes(key) ? `/${key}` : `/${href}`
+}
 
 export default function Nav() {
   const [scrolled, setScrolled] = useState(false)
-  const { pathname } = useLocation()
-  const dark = pathname === '/' // story page → transparent/dark immersive nav
+  const [open, setOpen] = useState(false)
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40)
@@ -15,20 +21,22 @@ export default function Nav() {
   }, [])
 
   return (
-    <header className={`nav ${scrolled ? 'scrolled' : ''} ${dark ? 'nav--dark' : ''}`}>
+    <header className={`nav ${scrolled ? 'scrolled' : ''}`}>
       <div className="container nav__inner">
-        <Link className="nav__brand" to="/" aria-label="LWC Group home">
-          <span className="nav__badge">
-            <img src="/logo.png" alt="LWC Group" />
-          </span>
+        <Link className="nav__brand" to="/" onClick={() => setOpen(false)} aria-label="LWC Group home">
+          <span className="nav__badge"><img src="/logo.png" alt="LWC Group" /></span>
           <span className="nav__wordmark">LWC GROUP</span>
         </Link>
-        <nav className="nav__links">
-          <Link to="/">The Story</Link>
-          <Link to="/services">Services &amp; Method</Link>
-          <a className="btn nav__cta" href={`mailto:${brand.email}`}>
-            Contact us
-          </a>
+
+        <button className="nav__burger" onClick={() => setOpen((o) => !o)} aria-label="Toggle menu" aria-expanded={open}>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
+            {open ? <path d="M6 6l12 12M18 6L6 18" /> : <path d="M4 7h16M4 12h16M4 17h16" />}
+          </svg>
+        </button>
+
+        <nav className={`nav__links ${open ? 'open' : ''}`} onClick={() => setOpen(false)}>
+          {nav.map((n) => <Link key={n.href} to={toPath(n.href)}>{n.label}</Link>)}
+          <a className="btn nav__cta" href={`https://wa.me/${brand.whatsapp}`} target="_blank" rel="noreferrer">WhatsApp</a>
         </nav>
       </div>
     </header>

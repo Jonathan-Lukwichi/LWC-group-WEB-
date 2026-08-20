@@ -1,211 +1,120 @@
-// All site copy in one place. Sourced from the LWC Group Maintenance Reliability
-// proposal — deliberately grounded (no overclaim). Edit here to change the site.
+// All site copy in one place — the LWC Group multidisciplinary profile.
+// Honest by default: no invented clients, projects or guaranteed results.
 
 export const brand = {
   name: 'LWC GROUP',
-  tagline: 'King of Engineering Solutions',
-  domain: 'jlwanalytic.com',
-  email: 'info@jlwanalytic.com',
-  phone: '', // TODO: add phone / WhatsApp
-  regions: 'South Africa · DRC · Africa',
+  slogan: 'King of Engineering Solutions',
+  tagline: 'We turn engineering, data and technology into practical solutions that deliver measurable results.',
+  email: 'jonathanlukwichi29@gmail.com',
+  phone: '+27 84 731 4600',
+  whatsapp: '27847314600',
+  regions: 'South Africa · DRC',
+  languages: 'English · Français',
 }
 
 export const nav = [
-  { label: 'The problem', href: '#problem' },
-  { label: 'How we work', href: '#how' },
-  { label: 'Investment', href: '#investment' },
+  { label: 'Engineering', href: '#engineering' },
+  { label: 'Intelligence', href: '#intelligence' },
+  { label: 'Digital', href: '#digital' },
+  { label: 'Academy', href: '#academy' },
+  { label: 'Team', href: '#team' },
   { label: 'Contact', href: '#contact' },
 ]
 
-export const hero = {
-  kicker: 'Maintenance Reliability',
-  title: 'We turn breakdowns no one can master\ninto reliability everyone can.',
-  sub: 'Evidence-based maintenance and reliability for industrial plants — across South Africa, the DRC and wider Africa. We start small and prove the data before building anything on it.',
-  cta: 'Book a plant review',
-  ctaHref: '#contact',
-}
-
-export const problem = {
-  kicker: 'The problem we address',
-  title: 'Most plants maintain equipment out of habit — not evidence.',
-  lead: 'A routine gets set. It gets followed. Nobody checks whether it prevents anything. Meanwhile the same three machines keep failing, artisans lose half their shift finding parts, and the maintenance budget grows every year without anyone able to say where the money went.',
-  stat: { value: 30, prefix: '', suffix: '%', label: "of a shift is real maintenance work in poorly-prepared operations — against about 55% in a world-class one. It's not a workforce problem; it's a support problem." },
-  points: [
-    { h: 'The maintenance record is unusable.', p: 'Breakdowns logged in free text under pressure, or in a spreadsheet, or not at all. Failure codes default to "other". Downtime is recorded as repair time, not production loss.' },
-    { h: 'Prevention does not match failures.', p: 'Scheduled maintenance is concentrated in one part of the plant. Breakdowns are concentrated somewhere else. Nobody has put the two side by side.' },
-    { h: 'Routines are never tested.', p: 'A pump is inspected every three months and its bearings keep failing. The real question is whether that inspection could ever detect the problem in the first place.' },
-    { h: 'Work is not prepared.', p: 'The delay begins long before the technician ever picks up a tool.' },
-  ],
-}
-
-// The signature before -> after scroll mechanic (Mining / Reliability).
-export const transformation = {
-  kicker: 'Mining · Reliability',
-  before: {
-    label: 'Before',
-    title: 'A breakdown no one can master',
-    caption: 'Unpredictable failure. Alarms. Downtime. Money leaking — and a team that can only react.',
-    img: '/mining-before.png', // Gemini BEFORE image (in /public)
+export const home = {
+  hero: {
+    bg: '/p-plant-night.jpg',
+    kicker: 'King of Engineering Solutions',
+    title: 'Engineering, intelligence\nand practical solutions.',
+    sub: 'We turn engineering, data and technology into practical solutions that deliver measurable results — for businesses, mines and industrial operations across South Africa and the DRC.',
   },
-  after: {
-    label: 'After',
-    title: 'A breakdown everyone masters',
-    caption: 'Predictable, prepared, controlled. The same team, now in command of the machine.',
-    img: '/mining-after.png', // Gemini AFTER image (in /public)
+  about: {
+    kicker: 'Who we are',
+    title: 'Four capabilities. One purpose: create measurable value.',
+    body: 'LWC Group is a South African engineering and technology company that helps businesses, mines and industrial organisations improve performance, reduce costs and make better decisions. We combine engineering, artificial intelligence, data, metallurgy, simulation and digital design under one roof — and we work in English and French.',
   },
-  metric: { value: 40, prefix: '−', suffix: '%', label: 'typical reduction in unplanned downtime*' },
-  note: '*Industry benchmark for predictive-maintenance programmes. Your real figure is established in the diagnostic — never promised up front.',
-}
-
-export const how = {
-  kicker: 'How we work',
-  title: 'We start small, and prove the data before we build on it.',
-  sub: 'Each stage tells you whether the next one is worth doing.',
-  stages: [
-    { n: '01', name: 'Maintenance System Review', meta: '1–2 days · no data required', p: 'We walk your plant and score the maintenance system against a structured checklist — governance, breakdowns, preventive and corrective work, spares, operator care, safety and documentation. You get two or three actions you can take immediately, at low cost.' },
-    { n: '02', name: 'Maintenance Data Diagnostic', meta: '2–3 weeks · one data export', p: 'We turn your records into real mean-time-between-failures, worst assets ranked by true cost, and a comparison of where your prevention goes against where failures actually happen — plus an honest statement of whether the data can support anything further.' },
-    { n: '03', name: 'Reliability Workbench', meta: 'conditional on Stage 2', p: 'Where the history is rich enough, we draft failure-mode analyses, root-cause reports and job plans for your engineers to review and approve. The purpose is to remove the assembly work, not the judgement.' },
-    { n: '04', name: 'Condition & Prediction', meta: 'conditional · deliberately narrow', p: 'Only for the two or three worst asset classes the earlier stages identify. We never start here — predicting failures on equipment you have never properly recorded is not possible.' },
+  approach: [
+    { n: '1', name: 'Understand', p: 'the problem' },
+    { n: '2', name: 'Analyse', p: 'data & process' },
+    { n: '3', name: 'Engineer', p: 'the solution' },
+    { n: '4', name: 'Prove', p: 'the result' },
+    { n: '5', name: 'Scale', p: 'what works' },
   ],
+  proof: {
+    kicker: 'Proven value',
+    title: 'We don’t just talk about results. We measure them.',
+    body: 'In one applied MSc project, we turned real hospital data into an ML forecast, decision tools, a simulation and a digital twin with a deployed app.',
+    kpi: 'R170,000 – R915,000',
+    kpiLabel: 'Potential annual savings indicated by the analysis',
+    kpiNote: 'Illustrative range based on the analysed scenarios — not a guaranteed saving.',
+  },
 }
 
-export const ai = {
-  kicker: 'Honesty',
-  title: 'Where we use AI — and where we do not.',
-  use: 'We use machine learning and language models for the sorting work that has always been too slow to do by hand: reading tens of thousands of work-order records, classifying them consistently, drafting documents from your own history, and finding patterns across a whole asset fleet.',
-  dont: 'We do not use it to make engineering decisions. Whether a three-monthly inspection can detect a failing bearing is a question about bearings — answered by an engineer who understands them. And we never write to your control systems. Everything we deliver is advisory and offline.',
-}
+export const divisions = [
+  {
+    slug: 'engineering', no: '01', name: 'LWC Engineering',
+    tag: 'Mining · Metallurgy · Process Optimisation',
+    hero: '/p-plant-interior.jpg',
+    lead: 'Optimise processes. Improve recovery. Reduce losses.',
+    intro: 'Our Mining & Metallurgy capability covers the minerals value chain — from mineral processing and extractive metallurgy to hydrometallurgy and metal recovery. We make your plant data meaningful and turn complex metallurgical processes into measurable value.',
+    pillars: [
+      { t: 'Mineral Processing', items: ['Crushing & Grinding', 'Classification', 'Flotation', 'Dewatering', 'Process Design', 'Mass Balancing'] },
+      { t: 'Extractive Metallurgy', items: ['Pyrometallurgy', 'Hydrometallurgy', 'Leaching & Recovery', 'Solvent Extraction', 'Smelting & Refining', 'Metallurgical Accounting'] },
+      { t: 'Hydrometallurgy', items: ['Acid & Alkaline Leaching', 'Solid–Liquid Separation', 'Ion Exchange', 'Precipitation', 'Electrowinning', 'Solution Purification'] },
+    ],
+    chain: ['Comminution', 'Concentration', 'Leaching', 'S–L Separation', 'Recovery', 'Refining'],
+    deliver: ['Process optimisation & efficiency', 'Metallurgical accounting & mass balance', 'Recovery & process analysis', 'Failure analysis', 'Quality control & sampling', 'Safe, sustainable operations'],
+  },
+  {
+    slug: 'intelligence', no: '02', name: 'LWC Intelligence',
+    tag: 'AI · Data · Automation · Simulation',
+    hero: '/p-server.jpg',
+    lead: 'From complex data to better decisions.',
+    intro: 'We apply AI, machine learning and simulation to engineering and operations — automating the modelling, the repetitive analysis, the optimisation and the decisions. We climb the Data Value Ladder only as far as it pays.',
+    ladder: ['Digitalise', 'Dashboard', 'Decision tool', 'Predictive model', 'Simulation', 'Digital twin'],
+    pillars: [
+      { t: 'Data & Analytics', items: ['Data cleaning & structuring', 'Dashboards & KPIs', 'Statistical analysis', 'Operational accounting', 'Reporting automation'] },
+      { t: 'AI & Machine Learning', items: ['Demand forecasting', 'Predictive models', 'Anomaly detection', 'AI automation', 'Decision support'] },
+      { t: 'Simulation & Digital Twins', items: ['Discrete-event & agent-based', 'System dynamics (AnyLogic / SimPy)', 'Digital twins', 'Optimisation', 'Test before you invest'] },
+    ],
+    tools: ['Python', 'Power BI', 'Azure ML', 'AnyLogic', 'SimPy', 'ONNX', 'Six Sigma'],
+    deliver: ['Dashboards', 'Forecasts', 'Optimisation', 'AI automations', 'Digital twins', 'Decision-support tools'],
+  },
+  {
+    slug: 'digital', no: '03', name: 'LWC Digital',
+    tag: 'Websites · 3D · Video · Digital Experiences',
+    hero: '/p-website.jpg',
+    lead: 'Make your business impossible to ignore.',
+    intro: 'We combine technology and visual communication to help businesses build a stronger digital presence — premium websites, 3D experiences and high-impact commercial content that communicate the value you create.',
+    services: ['Premium Websites', '3D Websites & Product Visualisation', 'Commercial Video', 'AI-Assisted Advertising', 'Digital Experiences', 'English & French Content'],
+  },
+  {
+    slug: 'academy', no: '04', name: 'LWC Academy',
+    tag: 'Research · Training · Enablement',
+    hero: '/p-research.jpg',
+    lead: 'Do better research, in less time.',
+    intro: 'For postgraduate students and working professionals — mentoring, technical support and tools across the whole research journey. We build your capability; we never do your work for you.',
+    offers: [
+      { t: 'Research Mentoring & Technical Support', p: 'Proposal · systematic review · methodology · simulation (AnyLogic · COMSOL · MATLAB · Python) · analysis.' },
+      { t: 'AI Research-Workflow Automation', p: 'Automate the repetitive parts — search, references, formatting, data, boilerplate code — saving up to 50% of mechanical time, ethically.' },
+      { t: 'Training & Workshops', p: 'We teach engineers and teams to build their own AI automation for research, reporting, modelling and optimisation.' },
+    ],
+    promise: 'We help you learn, progress and produce better work — in line with academic integrity. We build your skills; we never do your work for you.',
+  },
+]
 
-export const wontClaim = {
-  kicker: 'Trust',
-  title: 'What we will not claim.',
-  items: [
-    'We will not promise reduced downtime before seeing your data.',
-    'We will not recommend software, sensors or a platform in the first engagement.',
-    'If the diagnostic shows your records cannot support further analysis, we will say so and stop — rather than build something on a foundation that will not hold.',
+export const team = {
+  kicker: 'Our Team',
+  title: 'Engineering minds. Business focus.',
+  members: [
+    { name: 'Jonathan Lukwichi', role: 'Founder & CEO', photo: '/team-jonathan.jpg', bio: 'MSc candidate in Industrial Engineering; AI, data & simulation — turning complex data and operational challenges into practical solutions.', email: 'jonathanlukwichi29@gmail.com', phone: '+27 84 731 4600' },
+    { name: 'Christian Emmanuel Lukwichi', role: 'Director · Mining & Metallurgy', photo: '/team-christian.jpg', bio: 'BEng Tech (Hons) Metallurgical Engineering — extractive metallurgy, mineral processing, hydrometallurgy and process optimisation.', email: 'chrislukwichi@gmail.com', phone: '+27 61 660 2809' },
+    { name: 'Samuel Lukwichi', role: 'Director · Finance & Administration', photo: '/team-samuel.jpg', bio: 'Finance, administration and client relations. EN · FR · Swahili · Lingala.', email: 'samylukwichi@gmail.com', phone: '+27 84 746 2893' },
   ],
-}
-
-export const investment = {
-  kicker: 'Investment',
-  title: 'Fixed price where it counts. Quoted only when justified.',
-  rows: [
-    ['Stage 1 — Maintenance System Review', '1–2 days', 'Fixed fee'],
-    ['Stage 2 — Maintenance Data Diagnostic', '2–3 weeks', 'Fixed fee'],
-    ['Stage 3 — Reliability Workbench', 'Scoped after Stage 2', 'Quoted'],
-    ['Stage 4 — Condition & Prediction', 'Scoped after Stage 3', 'Quoted'],
-  ],
-  note: 'Stages 1 and 2 are fixed price. Later stages are quoted only once the earlier work has shown they are justified.',
-}
-
-export const who = {
-  kicker: 'Who we are',
-  title: 'Two brothers. One sees the system, one sees the machine.',
-  p: 'LWC Group is built by Jonathan and Christian Lukwichi. One works in industrial systems, simulation, data analysis and machine learning; the other in metallurgy, mineral processing and electromechanical systems. Between us we cover how a plant behaves as a system and how the equipment inside it actually fails. We work in English and French.',
 }
 
 export const contact = {
-  kicker: 'Next step',
-  title: 'A conversation — and if it is useful, one day on your plant.',
-  cta: 'Start with a plant review',
-}
-
-// Honest hero trust-strip (no invented project counts — we are a new practice).
-export const heroStats = [
-  { top: 'Stages 1–2', label: 'Fixed fee. No surprises.' },
-  { top: 'EN · FR', label: 'We work in two languages.' },
-  { top: 'SA · DRC', label: 'and wider Africa.' },
-  { top: 'Advisory', label: 'Offline. We never touch your controls.' },
-]
-
-// Scroll-scrub hero: the "rescue" video narrated as the visitor scrolls.
-export const heroScroll = {
-  cue: 'Scroll to see the rescue',
-  scenes: [
-    {
-      tag: 'Mining · Reliability',
-      title: 'A breakdown no one could master.',
-      p: 'Unpredictable failure. Downtime. A team that can only react.',
-    },
-    {
-      tag: 'The turn',
-      title: 'Then LWC reads the plant’s own data.',
-      p: 'Tens of thousands of maintenance records — sorted, understood, and turned into a clear picture of what is really failing.',
-    },
-    {
-      tag: 'Prediction',
-      title: 'And the failure is seen before it happens.',
-      p: 'Condition and prediction on the assets that matter most — while there is still time to act.',
-    },
-    {
-      tag: 'Mastered',
-      title: 'A breakdown everyone masters.',
-      p: 'The same team, now in command — with the numbers to prove it.',
-    },
-  ],
-}
-
-// Page 1 — the immersive story.
-export const story = {
-  brandLine: 'King of Engineering Solutions',
-  introTitle: 'Reliability, engineered.',
-  introSub: 'Scroll to see how a breakdown no one could master becomes one everyone can.',
-  cue: 'Scroll',
-  ctaLabel: 'See how we work',
-  ctaTo: '/services',
-}
-
-// Page 2 — the details header.
-export const detailsHead = {
-  kicker: 'Maintenance Reliability',
-  title: 'The method, the stages, and what it costs.',
-  sub: 'Everything behind the story — how we work, what you receive, and how we price it. Evidence first; we prove the data before we build on it.',
-}
-
-// Capabilities (honest — what we do, not fabricated client references).
-export const capabilities = {
-  kicker: 'What we deliver',
-  title: 'Reliability, built on your own evidence.',
-  sub: 'Each capability maps to a stage of the method — and each is proven on your data before the next begins.',
-  items: [
-    {
-      tag: 'Stage 2',
-      title: 'Reliability diagnostics',
-      p: 'We turn your maintenance history into real mean-time-between-failures, worst assets ranked by true cost, and a map of where prevention goes against where failures actually happen.',
-      specs: [ ['Input', 'One data export'], ['Time', '2–3 weeks'] ],
-    },
-    {
-      tag: 'Stage 3',
-      title: 'Reliability workbench',
-      p: 'AI drafts failure-mode analyses, root-cause reports and standard job plans from your own records; your engineers review and approve. We remove the assembly work, not the judgement.',
-      specs: [ ['Output', 'FMEA · RCA · job plans'], ['Basis', 'Your history'] ],
-    },
-    {
-      tag: 'Stage 4',
-      title: 'Condition & prediction',
-      p: 'Narrow and deliberate — only the two or three worst rotating assets, using motor current and temperature you already measure. No new instrumentation to begin.',
-      specs: [ ['Scope', 'Worst assets only'], ['Data', 'Already collected'] ],
-    },
-  ],
-}
-
-// The two principals — the strongest, and entirely true.
-export const team = {
-  kicker: 'Talk to us directly',
-  title: 'Two brothers. One sees the system, one sees the machine.',
-  sub: 'Give us a call and rely on straight engineering advice to get your reliability programme right.',
-  members: [
-    {
-      name: 'Jonathan Lukwichi',
-      role: 'Industrial systems · simulation · data & ML',
-      email: 'jonathan@jlwanalytic.com',
-      langs: 'English · Français',
-    },
-    {
-      name: 'Christian Lukwichi',
-      role: 'Metallurgy · mineral processing · electromechanical',
-      email: 'christian@jlwanalytic.com',
-      langs: 'English · Français',
-    },
-  ],
+  kicker: 'Let’s work together',
+  title: 'Your problem could be our next solution.',
+  body: 'Whether you need to optimise a process, improve recovery, understand your data, automate a task, reduce costs or strengthen your digital presence — LWC Group can help.',
 }
