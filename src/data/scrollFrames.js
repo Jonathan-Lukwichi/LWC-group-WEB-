@@ -47,10 +47,10 @@ export const scrollFrames = {
       frames: { dir: '/f-digital', count: 148 }, video: '/v-digital-energy.mp4', poster: '/p-digital-energy.jpg',
       kicker: 'LWC Digital', heightVh: 340,
       beats: [
-        { t: 'We tell the story that sells.', p: 'A case study — presenting an energy company’s services, our way.' },
+        { t: 'We tell the story that sells.', p: 'A case study — an energy company’s services, presented our way.' },
         { t: 'From install to impact.',       p: 'Premium video and 3D that make the work shine.' },
-        { t: 'Powered, day and night.',       p: 'Websites, 3D and commercial video.' },
-        { t: 'Impossible to ignore.',         p: 'Digital experiences that carry your value.' },
+        { t: 'Store it. Never go dark.',      p: 'The product, shown at its best.' },
+        { t: 'Impossible to ignore.',         p: 'Websites, 3D and commercial video that carry your value.' },
       ],
     },
     vVideo: '/v-digital-energy.mp4', vPoster: '/p-digital-energy.jpg', vVariant: 'tablet', vSide: 'right',
@@ -58,11 +58,12 @@ export const scrollFrames = {
   },
   academy: {
     scrub: {
-      frames: { dir: '/f-academy', count: 101 }, video: '/v-cap-academy.mp4', poster: '/cap-academy.jpg',
-      kicker: 'LWC Academy', heightVh: 260,
+      frames: { dir: '/f-academy', count: 126 }, video: '/v-academy-montage.mp4', poster: '/p-academy-montage.jpg',
+      kicker: 'LWC Academy', heightVh: 300,
       beats: [
-        { t: 'We build the next generation.',   p: 'Research mentoring and AI training — ethically.' },
-        { t: 'Do better research, in less time.', p: 'Across the whole research journey.' },
+        { t: 'The research journey.',            p: 'Proposal, systematic review, methodology.' },
+        { t: 'We build the next generation.',    p: 'Mentoring across the whole journey — ethically.' },
+        { t: 'Better research, in less time.',   p: 'AI that cuts the repetitive work, never the rigour.' },
       ],
     },
     vVideo: '/v-cap-academy.mp4', vPoster: '/cap-academy.jpg', vVariant: 'phone', vSide: 'right',
