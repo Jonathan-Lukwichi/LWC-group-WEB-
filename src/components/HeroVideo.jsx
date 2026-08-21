@@ -1,5 +1,7 @@
-import { useEffect, useRef } from 'react'
+import { lazy, Suspense, useEffect, useRef, useState } from 'react'
 import { home } from '../data/content'
+
+const Hero3DLayer = lazy(() => import('./Hero3DLayer'))
 
 // Main hero: full-viewport cinematic video (gold emblem) with the headline overlaid.
 // The POSTER is the LCP element; the video is deferred (preload="none") and only
@@ -8,6 +10,19 @@ import { home } from '../data/content'
 export default function HeroVideo() {
   const h = home
   const v = useRef(null)
+  const [show3d, setShow3d] = useState(false)
+
+  // 3D is a progressive enhancement: only on capable desktops.
+  useEffect(() => {
+    const mm = (q) => window.matchMedia && window.matchMedia(q).matches
+    const capable =
+      mm('(min-width:1024px)') &&
+      mm('(pointer:fine)') &&
+      !mm('(prefers-reduced-motion:reduce)') &&
+      (navigator.hardwareConcurrency || 0) > 4
+    if (capable) setShow3d(true)
+  }, [])
+
   useEffect(() => {
     const el = v.current
     if (!el) return
@@ -41,6 +56,7 @@ export default function HeroVideo() {
         <source src="/v-cap-emblem.mp4" type="video/mp4" />
       </video>
       <div className="vhero__veil" />
+      {show3d && <Suspense fallback={null}><Hero3DLayer /></Suspense>}
       <div className="container vhero__in">
         <div className="kicker hero__kicker">{h.hero.kicker}</div>
         <h1 className="display vhero__title" style={{ whiteSpace: 'pre-line' }}>{h.hero.title}</h1>

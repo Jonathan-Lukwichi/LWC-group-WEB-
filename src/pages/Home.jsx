@@ -4,6 +4,7 @@ import { srcSet } from '../lib/img'
 import Reveal from '../components/Reveal'
 import HeroVideo from '../components/HeroVideo'
 import HeroBand from '../components/HeroBand'
+import ScrollHero from '../components/ScrollHero'
 import Cinematic from '../components/Cinematic'
 import { scenario1 } from '../data/scenarios'
 
@@ -78,13 +79,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 3 — FOUR DIVISIONS (heading folded in; single headline) */}
-      <section className="section" id="divisions" style={{ paddingBottom: 0 }}>
+      {/* 3 — FOUR DIVISIONS: horizontal scroll-hero opener (desktop scrubs, touch = static) */}
+      <ScrollHero
+        id="divisions"
+        frames={{ dir: '/f-home-h', count: 40 }}
+        heightVh={200}
+        heading="h2"
+        kicker="What we do"
+        title={<>Four capabilities. One purpose: <span className="gold-text">create measurable value.</span></>}
+      />
+      <section className="section" style={{ paddingBottom: 0 }}>
         <div className="container center">
           <Reveal className="shead center" style={{ margin: '0 auto' }}>
-            <div className="kicker">What we do</div>
-            <h2 className="h2">Four capabilities. One purpose: <span className="gold-text">create measurable value.</span></h2>
-            <div className="rule center" />
             <p className="lead" style={{ margin: '0 auto' }}>{h.about.body}</p>
           </Reveal>
         </div>
