@@ -30,12 +30,13 @@ export const scrollFrames = {
   },
   intelligence: {
     scrub: {
-      frames: { dir: '/f-intel', count: 144 }, video: '/v-intel-montage.mp4', poster: '/p-intel-montage.jpg',
-      kicker: 'LWC Intelligence', heightVh: 320,
+      frames: { dir: '/f-intel', count: 198 }, video: '/v-intel-montage.mp4', poster: '/p-intel-montage.jpg',
+      kicker: 'LWC Intelligence', heightVh: 380,
       beats: [
-        { t: 'From data to decisions.',        p: 'AI, data, automation and simulation.' },
-        { t: 'Engineering + AI, in real time.', p: 'We read where value is lost, as it happens.' },
-        { t: 'Insight you can act on.',         p: 'Dashboards, forecasts and digital twins.' },
+        { t: 'From data to decisions.',         p: 'AI, data, automation and simulation.' },
+        { t: 'Engineering + AI, in real time.', p: 'Plant data becomes insight, as it happens.' },
+        { t: 'We read where value is lost.',    p: 'Reliability meets intelligence, on the floor.' },
+        { t: 'Insight you can act on.',          p: 'Dashboards, forecasts and digital twins — in your hand.' },
       ],
     },
     vVideo: '/v-cap-intelligence.mp4', vPoster: '/cap-intelligence.jpg', vVariant: 'phone', vSide: 'right',

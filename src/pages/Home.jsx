@@ -122,16 +122,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 7 — HERO BAND: pays for itself */}
-      <HeroBand
-        video="/v-eng-inspect.mp4"
-        poster="/p-eng-inspect.jpg"
-        kicker="Why LWC"
-        title={<>Engineering that <span className="gold-text">pays for itself.</span></>}
-        sub="We find the value hiding in your operation — in recovery, throughput and cost — then we prove it in the numbers."
-        cta={{ href: '#team', label: 'Meet the team' }}
-      />
-
       {/* 8 + 9 — TEAM & CONTACT (merged) */}
       <section className="section section--alt" id="team">
         <div className="container">
