@@ -6,7 +6,7 @@
 export const scrollFrames = {
   engineering: {
     scrub: {
-      frames: { dir: '/f-eng', count: 216 }, video: '/v-eng-process.mp4', poster: '/p-eng-process.jpg',
+      frames: { dir: '/f-eng', count: 140 }, video: '/v-eng-process.mp4', poster: '/p-eng-process.jpg',
       kicker: 'LWC Process Engineering', heightVh: 460,
       beats: [
         { t: 'It starts with raw ore.',        p: 'Every operation begins with the material — and the money — in the ground.' },
@@ -30,7 +30,7 @@ export const scrollFrames = {
   },
   intelligence: {
     scrub: {
-      frames: { dir: '/f-intel', count: 198 }, video: '/v-intel-montage.mp4', poster: '/p-intel-montage.jpg',
+      frames: { dir: '/f-intel', count: 126 }, video: '/v-intel-montage.mp4', poster: '/p-intel-montage.jpg',
       kicker: 'LWC Intelligence', heightVh: 380,
       beats: [
         { t: 'From data to decisions.',         p: 'AI, data, automation and simulation.' },
@@ -44,7 +44,7 @@ export const scrollFrames = {
   },
   digital: {
     scrub: {
-      frames: { dir: '/f-digital', count: 148 }, video: '/v-digital-energy.mp4', poster: '/p-digital-energy.jpg',
+      frames: { dir: '/f-digital', count: 108 }, video: '/v-digital-energy.mp4', poster: '/p-digital-energy.jpg',
       kicker: 'LWC Digital', heightVh: 340,
       beats: [
         { t: 'We tell the story that sells.', p: 'A case study — an energy company’s services, presented our way.' },
@@ -58,7 +58,7 @@ export const scrollFrames = {
   },
   academy: {
     scrub: {
-      frames: { dir: '/f-academy', count: 126 }, video: '/v-academy-montage.mp4', poster: '/p-academy-montage.jpg',
+      frames: { dir: '/f-academy', count: 92 }, video: '/v-academy-montage.mp4', poster: '/p-academy-montage.jpg',
       kicker: 'LWC Academy', heightVh: 300,
       beats: [
         { t: 'The research journey.',            p: 'Proposal, systematic review, methodology.' },
@@ -72,7 +72,7 @@ export const scrollFrames = {
 }
 
 export const homeHero = {
-  frames: { dir: '/f-home', count: 149 }, video: '/v-home-montage.mp4', poster: '/p-home-montage.jpg',
+  frames: { dir: '/f-home', count: 108 }, video: '/v-home-montage.mp4', poster: '/p-home-montage.jpg',
   kicker: 'King of Engineering Solutions', heightVh: 340,
   beats: [
     { t: 'Engineering, intelligence\nand practical solutions.', p: 'We turn engineering, data and technology into measurable results — for businesses, mines and industry across South Africa and the DRC.' },
