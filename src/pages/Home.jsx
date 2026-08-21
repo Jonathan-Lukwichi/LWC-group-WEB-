@@ -5,7 +5,7 @@ import Reveal from '../components/Reveal'
 import HeroVideo from '../components/HeroVideo'
 import HeroBand from '../components/HeroBand'
 import Cinematic from '../components/Cinematic'
-import { scenario1, scenario3 } from '../data/scenarios'
+import { scenario1 } from '../data/scenarios'
 
 const Phone = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
@@ -15,6 +15,14 @@ const Mail = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
     <rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg>
 )
+
+// Credibility facts — answers "are these people real" right under the hero.
+const CRED = [
+  { b: '4 Divisions', s: 'Engineering · Intelligence · Digital · Academy' },
+  { b: '2 Countries', s: 'South Africa · DRC' },
+  { b: '4 Languages', s: 'EN · FR · Swahili · Lingala' },
+  { b: 'Registered', s: 'SA company · Reg 2026/653840/07' },
+]
 
 function DivisionSection({ d, i }) {
   const caps = d.deliver || d.services || (d.offers && d.offers.map((o) => o.t)) || []
@@ -56,20 +64,43 @@ export default function Home() {
   const h = home
   return (
     <>
-      {/* VIDEO HERO */}
+      {/* 1 — VIDEO HERO */}
       <HeroVideo />
 
-      {/* CINEMATIC — Scenario 1: From Ore to Value */}
+      {/* 2 — CREDIBILITY STRIP */}
+      <section className="credstrip" aria-label="LWC Group at a glance">
+        <div className="container">
+          <div className="credstrip__grid">
+            {CRED.map((c) => (
+              <div className="cred" key={c.b}><b>{c.b}</b><span>{c.s}</span></div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 3 — FOUR DIVISIONS (heading folded in; single headline) */}
+      <section className="section" id="divisions" style={{ paddingBottom: 0 }}>
+        <div className="container center">
+          <Reveal className="shead center" style={{ margin: '0 auto' }}>
+            <div className="kicker">What we do</div>
+            <h2 className="h2">Four capabilities. One purpose: <span className="gold-text">create measurable value.</span></h2>
+            <div className="rule center" />
+            <p className="lead" style={{ margin: '0 auto' }}>{h.about.body}</p>
+          </Reveal>
+        </div>
+      </section>
+      {divisions.map((d, i) => <DivisionSection key={d.slug} d={d} i={i} />)}
+
+      {/* 4 — CINEMATIC scenario 1 (shortened) */}
       <Cinematic {...scenario1} />
 
-      {/* ABOUT + APPROACH */}
-      <section className="section" id="about">
+      {/* 5 — HOW WE WORK */}
+      <section className="section section--alt" id="approach">
         <div className="container">
-          <Reveal className="shead">
-            <div className="kicker">{h.about.kicker}</div>
-            <h2 className="h2">{h.about.title}</h2>
-            <div className="rule" />
-            <p className="lead">{h.about.body}</p>
+          <Reveal className="shead center" style={{ margin: '0 auto' }}>
+            <div className="kicker">How we work</div>
+            <h2 className="h2">From problem to <span className="gold-text">proven result.</span></h2>
+            <div className="rule center" />
           </Reveal>
           <Reveal className="chain" style={{ marginTop: 'clamp(40px,6vh,64px)' }}>
             {h.approach.map((s, i) => (
@@ -82,29 +113,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* IMMERSIVE HERO BAND — value proposition */}
-      <HeroBand
-        video="/v-eng-inspect.mp4"
-        poster="/p-eng-inspect.jpg"
-        kicker="Why LWC"
-        title={<>Engineering that <span className="gold-text">pays for itself.</span></>}
-        sub="We find the value hiding in your operation — in recovery, throughput and cost — then we prove it in the numbers."
-        cta={{ href: '#divisions', label: 'See how we do it' }}
-      />
-
-      {/* DIVISIONS INTRO */}
-      <section className="section section--alt" id="divisions" style={{ paddingBottom: 0 }}>
-        <div className="container center">
-          <Reveal className="shead center" style={{ margin: '0 auto' }}>
-            <div className="kicker">What we do</div>
-            <h2 className="h2">Four capabilities. One purpose: <span className="gold-text">create measurable value.</span></h2>
-            <div className="rule center" />
-          </Reveal>
-        </div>
-      </section>
-      {divisions.map((d, i) => <DivisionSection key={d.slug} d={d} i={i} />)}
-
-      {/* PROVEN VALUE */}
+      {/* 6 — PROVEN VALUE */}
       <section className="section">
         <div className="container split">
           <Reveal className="split__txt">
@@ -121,67 +130,54 @@ export default function Home() {
         </div>
       </section>
 
-      {/* TEAM */}
+      {/* 7 — HERO BAND: pays for itself */}
+      <HeroBand
+        video="/v-eng-inspect.mp4"
+        poster="/p-eng-inspect.jpg"
+        kicker="Why LWC"
+        title={<>Engineering that <span className="gold-text">pays for itself.</span></>}
+        sub="We find the value hiding in your operation — in recovery, throughput and cost — then we prove it in the numbers."
+        cta={{ href: '#team', label: 'Meet the team' }}
+      />
+
+      {/* 8 + 9 — TEAM & CONTACT (merged) */}
       <section className="section section--alt" id="team">
         <div className="container">
           <Reveal className="shead center" style={{ margin: '0 auto' }}>
             <div className="kicker">{team.kicker}</div>
             <h2 className="h2">{team.title}</h2>
             <div className="rule center" />
+            <p className="lead" style={{ margin: '0 auto' }}>{contact.body}</p>
           </Reveal>
-          <div className="grid g3" style={{ marginTop: 50 }}>
+          <div id="contact" className="grid g3" style={{ marginTop: 46 }}>
             {team.members.map((m, i) => (
-              <Reveal key={m.name} className="pcard" delay={i * 90}>
+              <Reveal key={m.name} className="pcard pcard--full" delay={i * 90}>
                 <div className="pcard__ph"><img src={m.photo} srcSet={srcSet(m.photo)} sizes="(min-width:900px) 33vw, 100vw" alt={m.name} loading="lazy" decoding="async" /></div>
                 <h3>{m.name}</h3>
                 <div className="role">{m.role}</div>
                 <p>{m.bio}</p>
+                <div className="pcard__contact">
+                  <a href={`https://wa.me/${m.phone.replace(/\D/g, '')}`} target="_blank" rel="noreferrer"><Phone />{m.phone}</a>
+                  <a href={`mailto:${m.email}`}><Mail />{m.email}</a>
+                </div>
               </Reveal>
             ))}
           </div>
           <p className="center small" style={{ marginTop: 34, letterSpacing: '.1em', textTransform: 'uppercase' }}>
-            Languages: English · Français · Swahili · Lingala
+            {brand.regions} · Languages: English · Français · Swahili · Lingala
           </p>
         </div>
       </section>
 
-      {/* CINEMATIC — Scenario 3: One Team, Four Capabilities */}
-      <Cinematic {...scenario3} />
-
-      {/* IMMERSIVE HERO BAND — closing call to action */}
+      {/* 10 — CLOSING CTA BAND */}
       <HeroBand
         video="/v-s1-smelt.mp4"
         poster="/s1-smelt.jpg"
         kicker="Let's build"
         title={<>Ready to unlock the value <span className="gold-text">in your operation?</span></>}
         sub="Engineering · Intelligence · Digital · Research — one team, measurable results."
-        cta={{ href: '#contact', label: 'Start a conversation' }}
+        cta={{ href: `https://wa.me/${brand.whatsapp}`, label: 'Message us on WhatsApp' }}
       />
-
-      {/* CONTACT */}
-      <section className="section" id="contact">
-        <div className="container">
-          <Reveal className="shead">
-            <div className="kicker">{contact.kicker}</div>
-            <h2 className="h2">{contact.title}</h2>
-            <div className="rule" />
-            <p className="lead">{contact.body}</p>
-          </Reveal>
-          <div className="grid g3" style={{ marginTop: 44 }}>
-            {team.members.map((m, i) => (
-              <Reveal key={m.name} className="ccard" delay={i * 80}>
-                <h3>{m.name}</h3>
-                <div className="role">{m.role}</div>
-                <a href={`https://wa.me/${m.phone.replace(/\D/g, '')}`} target="_blank" rel="noreferrer"><Phone />{m.phone}</a>
-                <a href={`mailto:${m.email}`}><Mail />{m.email}</a>
-              </Reveal>
-            ))}
-          </div>
-          <p className="small" style={{ marginTop: 28, letterSpacing: '.14em', textTransform: 'uppercase' }}>
-            {brand.regions} · {brand.languages} · Website coming soon
-          </p>
-        </div>
-      </section>
     </>
   )
 }

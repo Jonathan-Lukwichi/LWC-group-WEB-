@@ -41,7 +41,7 @@ export default function Cinematic({ id, shots }) {
   }, [active])
 
   return (
-    <section className="cin" id={id} ref={ref} style={{ height: `${shots.length * 92}vh` }}>
+    <section className="cin" id={id} ref={ref} style={{ '--shots': shots.length }}>
       <div className="cin__stick">
         {shots.map((s, i) => {
           if (Math.abs(i - active) > 1) return null // mount active + neighbours only
