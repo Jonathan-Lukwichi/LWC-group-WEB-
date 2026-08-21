@@ -21,7 +21,10 @@ export default function HeroBand({ video, poster, kicker, title, sub, cta, align
 
   return (
     <section className={`band band--${align}`}>
-      <video ref={v} className="band__bg" src={video} poster={poster} muted loop playsInline preload="metadata" />
+      <video ref={v} className="band__bg" poster={poster.endsWith('.jpg') ? poster.slice(0, -4) + '-960.webp' : poster} muted loop playsInline preload="none">
+        <source src={video.replace(/\.mp4$/, '.webm')} type="video/webm" />
+        <source src={video} type="video/mp4" />
+      </video>
       <div className="band__veil" />
       <div className="container band__in">
         {kicker && <div className="kicker">{kicker}</div>}

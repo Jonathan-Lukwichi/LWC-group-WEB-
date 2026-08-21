@@ -1,5 +1,6 @@
 import { Fragment } from 'react'
 import { home, divisions, team, contact, brand } from '../data/content'
+import { srcSet } from '../lib/img'
 import Reveal from '../components/Reveal'
 import HeroVideo from '../components/HeroVideo'
 import HeroBand from '../components/HeroBand'
@@ -21,7 +22,7 @@ function DivisionSection({ d, i }) {
   return (
     <section className={`section ${i % 2 === 1 ? 'section--alt' : ''}`} id={d.slug}>
       <div className={`container split ${rev ? 'rev' : ''}`}>
-        <Reveal className="split__img"><img src={d.hero} alt={d.name} /></Reveal>
+        <Reveal className="split__img"><img src={d.hero} srcSet={srcSet(d.hero)} sizes="(min-width:900px) 50vw, 100vw" alt={d.name} loading="lazy" decoding="async" /></Reveal>
         <Reveal className="split__txt" delay={80}>
           <div className="kicker">Division {d.no} · {d.name}</div>
           <h2 className="h2">{d.lead}</h2>
@@ -131,7 +132,7 @@ export default function Home() {
           <div className="grid g3" style={{ marginTop: 50 }}>
             {team.members.map((m, i) => (
               <Reveal key={m.name} className="pcard" delay={i * 90}>
-                <div className="pcard__ph"><img src={m.photo} alt={m.name} /></div>
+                <div className="pcard__ph"><img src={m.photo} srcSet={srcSet(m.photo)} sizes="(min-width:900px) 33vw, 100vw" alt={m.name} loading="lazy" decoding="async" /></div>
                 <h3>{m.name}</h3>
                 <div className="role">{m.role}</div>
                 <p>{m.bio}</p>

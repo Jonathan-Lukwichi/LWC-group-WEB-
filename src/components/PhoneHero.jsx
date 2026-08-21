@@ -29,7 +29,10 @@ export default function PhoneHero({ video, poster, kicker, title, sub }) {
         </div>
         <div className="phone">
           <div className="phone__notch" />
-          <video ref={v} className="phone__cv" src={video} poster={poster} muted loop playsInline preload="metadata" />
+          <video ref={v} className="phone__cv" poster={poster && poster.endsWith('.jpg') ? poster.slice(0, -4) + '-960.webp' : poster} muted loop playsInline preload="none">
+            <source src={video.replace(/\.mp4$/, '.webm')} type="video/webm" />
+            <source src={video} type="video/mp4" />
+          </video>
         </div>
       </div>
     </section>

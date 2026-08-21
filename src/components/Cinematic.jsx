@@ -1,14 +1,16 @@
 import { useEffect, useRef, useState } from 'react'
+import { srcSet } from '../lib/img'
 
-// Scroll-driven cinematic. Each shot is either a still (crossfade + slow Ken-Burns)
-// or a video clip (auto-plays only while it's the active shot). Mix freely — set a
-// shot's `video` field to animate it; leave it off to keep the still.
+const webm = (mp4) => mp4.replace(/\.mp4$/, '.webm')
+
+// Scroll-driven cinematic. Only the active shot and its immediate neighbours are
+// mounted (so the whole still/clip set is never fetched at once). Stills are lazy
+// <img>; video shots auto-play only while active.
 export default function Cinematic({ id, shots }) {
   const ref = useRef(null)
-  const vids = useRef([])           // <video> refs, indexed by shot
+  const vids = useRef({})
   const [active, setActive] = useState(0)
 
-  // Map scroll position over this section -> active shot index.
   useEffect(() => {
     let raf = 0
     const onScroll = () => {
@@ -29,11 +31,11 @@ export default function Cinematic({ id, shots }) {
     return () => { window.removeEventListener('scroll', onScroll); if (raf) cancelAnimationFrame(raf) }
   }, [shots.length])
 
-  // Play only the active clip; pause + rewind the rest (saves CPU/GPU + battery).
+  // Play only the active clip; pause + rewind the rest.
   useEffect(() => {
-    vids.current.forEach((v, i) => {
+    Object.entries(vids.current).forEach(([i, v]) => {
       if (!v) return
-      if (i === active) { const pr = v.play(); if (pr && pr.catch) pr.catch(() => {}) }
+      if (Number(i) === active) { const pr = v.play(); if (pr && pr.catch) pr.catch(() => {}) }
       else { v.pause(); try { v.currentTime = 0 } catch {} }
     })
   }, [active])
@@ -41,27 +43,24 @@ export default function Cinematic({ id, shots }) {
   return (
     <section className="cin" id={id} ref={ref} style={{ height: `${shots.length * 92}vh` }}>
       <div className="cin__stick">
-        {shots.map((s, i) => (
-          s.video ? (
+        {shots.map((s, i) => {
+          if (Math.abs(i - active) > 1) return null // mount active + neighbours only
+          const on = i === active
+          return s.video ? (
             <video
               key={i}
-              ref={(el) => (vids.current[i] = el)}
-              className={`cin__layer cin__video ${i === active ? 'on' : ''}`}
-              src={s.video}
-              poster={s.img}
-              muted
-              loop
-              playsInline
-              preload="metadata"
-            />
+              ref={(el) => { vids.current[i] = el }}
+              className={`cin__layer cin__video ${on ? 'on' : ''}`}
+              poster={s.img.endsWith('.jpg') ? s.img.slice(0, -4) + '-960.webp' : s.img}
+              muted loop playsInline preload="none"
+            >
+              <source src={webm(s.video)} type="video/webm" />
+              <source src={s.video} type="video/mp4" />
+            </video>
           ) : (
-            <div
-              key={i}
-              className={`cin__layer ${i === active ? 'on' : ''}`}
-              style={{ backgroundImage: `url(${s.img})` }}
-            />
+            <img key={i} className={`cin__layer cin__img ${on ? 'on' : ''}`} src={s.img} srcSet={srcSet(s.img)} sizes="100vw" alt="" loading="lazy" decoding="async" />
           )
-        ))}
+        })}
         <div className="cin__veil" />
         <div className="cin__caps">
           {shots.map((s, i) => (

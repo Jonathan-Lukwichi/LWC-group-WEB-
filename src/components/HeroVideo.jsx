@@ -2,28 +2,44 @@ import { useEffect, useRef } from 'react'
 import { home } from '../data/content'
 
 // Main hero: full-viewport cinematic video (gold emblem) with the headline overlaid.
-// Replaces the 3D medallion hero.
+// The POSTER is the LCP element; the video is deferred (preload="none") and only
+// starts after the page has loaded or on the user's first interaction, so it never
+// competes with first paint.
 export default function HeroVideo() {
   const h = home
   const v = useRef(null)
   useEffect(() => {
     const el = v.current
-    if (el) { const p = el.play(); if (p && p.catch) p.catch(() => {}) }
+    if (!el) return
+    let started = false
+    const cleanup = () => {
+      window.removeEventListener('load', start)
+      window.removeEventListener('pointerdown', start)
+      window.removeEventListener('keydown', start)
+      window.removeEventListener('scroll', start)
+    }
+    function start() {
+      if (started) return
+      started = true
+      el.preload = 'auto'
+      const p = el.play()
+      if (p && p.catch) p.catch(() => {})
+      cleanup()
+    }
+    if (document.readyState === 'complete') setTimeout(start, 400)
+    else window.addEventListener('load', start, { once: true })
+    window.addEventListener('pointerdown', start, { once: true })
+    window.addEventListener('keydown', start, { once: true })
+    window.addEventListener('scroll', start, { once: true, passive: true })
+    return cleanup
   }, [])
 
   return (
     <section className="vhero" id="top">
-      <video
-        ref={v}
-        className="vhero__bg"
-        src="/v-cap-emblem.mp4"
-        poster="/cap-emblem.jpg"
-        muted
-        loop
-        playsInline
-        autoPlay
-        preload="auto"
-      />
+      <video ref={v} className="vhero__bg" poster="/cap-emblem-1440.webp" muted loop playsInline preload="none">
+        <source src="/v-cap-emblem.webm" type="video/webm" />
+        <source src="/v-cap-emblem.mp4" type="video/mp4" />
+      </video>
       <div className="vhero__veil" />
       <div className="container vhero__in">
         <div className="kicker hero__kicker">{h.hero.kicker}</div>
