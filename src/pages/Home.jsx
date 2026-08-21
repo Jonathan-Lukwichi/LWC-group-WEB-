@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom'
 import { home, divisions, team, contact, brand } from '../data/content'
 import { srcSet } from '../lib/img'
 import Reveal from '../components/Reveal'
-import CarouselHero from '../components/CarouselHero'
+import ScrubHero from '../components/ScrubHero'
 import HeroBand from '../components/HeroBand'
 import ScrollHero from '../components/ScrollHero'
 import CardMedia from '../components/CardMedia'
+import { homeHero } from '../data/scrollFrames'
 
 // Animated background clip + poster for each division card.
 const CARD_MEDIA = {
@@ -37,15 +38,8 @@ export default function Home() {
   const h = home
   return (
     <>
-      {/* 1 — CAROUSEL HERO (looping brand montage, slows on scroll) */}
-      <CarouselHero
-        id="top"
-        video="/v-home-montage.mp4"
-        poster="/p-home-montage.jpg"
-        kicker={h.hero.kicker}
-        title={h.hero.title}
-        sub={h.hero.sub}
-      />
+      {/* 1 — IMMERSIVE SCROLL-FILM HERO */}
+      <ScrubHero id="top" {...homeHero} />
 
       {/* 2 — CREDIBILITY STRIP */}
       <section className="credstrip" aria-label="LWC Group at a glance">

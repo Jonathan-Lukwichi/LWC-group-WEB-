@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { divisions } from '../data/content'
 import { scrollFrames } from '../data/scrollFrames'
 import Reveal from '../components/Reveal'
-import CarouselHero from '../components/CarouselHero'
+import ScrubHero from '../components/ScrubHero'
 import PhoneHero from '../components/PhoneHero'
 import Carousel from '../components/Carousel'
 
@@ -26,8 +26,8 @@ export default function Division({ slug }) {
   const sf = scrollFrames[slug]
   return (
     <>
-      {/* FIRST HERO — looping "carousel" video, slows on scroll */}
-      {sf && sf.chero && <CarouselHero {...sf.chero} />}
+      {/* FIRST HERO — immersive scroll-film (canvas + scroll + idle auto-play) */}
+      {sf && sf.scrub && <ScrubHero {...sf.scrub} />}
 
       {/* SECOND HERO — moving video in a device frame (phone or tablet) */}
       {sf && <PhoneHero video={sf.vVideo} poster={sf.vPoster} kicker="In motion" title={sf.vTitle} sub={sf.vSub} variant={sf.vVariant} side={sf.vSide} />}

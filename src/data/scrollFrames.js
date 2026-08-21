@@ -1,19 +1,20 @@
 // Per-service heroes.
-//  chero  = looping "carousel" video hero (auto-plays, slows on scroll). Optional
-//           time-synced captions {at, t, p}. Otherwise a title/sub.
-//  vVideo = second hero clip in a device frame (phone 9:16 or tablet 4:3),
-//           vVariant 'phone'|'tablet', vSide 'left'|'right', with vTitle/vSub.
+//  scrub  = immersive scroll-film hero (canvas driven by scroll + idle auto-play).
+//           { frames:{dir,count}, video (mobile fallback), poster, kicker, beats, heightVh }
+//  vVideo = second hero clip in a device frame (phone 9:16 / tablet 4:3).
+//  carousel = optional slides for the CTA section.
 export const scrollFrames = {
   engineering: {
-    chero: {
-      video: '/v-eng-process.mp4', poster: '/p-eng-process.jpg', kicker: 'LWC Process Engineering',
-      captions: [
-        { at: 0,  t: 'It starts with raw ore.',        p: 'Every operation begins with the material — and the money — in the ground.' },
-        { at: 5,  t: 'We move earth to unlock value.',  p: 'Extraction at scale, where efficiency is measured in millions.' },
-        { at: 9,  t: 'We engineer the process.',        p: 'From mineral processing to metal recovery, across the value chain.' },
-        { at: 14, t: 'Inside the plant.',               p: 'Where recovery, throughput and cost are won or lost.' },
-        { at: 19, t: 'We read where value is lost.',    p: 'Engineering plus AI turn plant data into insight, in real time.' },
-        { at: 24, t: 'From ore to metal — measured.',   p: 'Practical solutions that deliver value you can bank.' },
+    scrub: {
+      frames: { dir: '/f-eng', count: 216 }, video: '/v-eng-process.mp4', poster: '/p-eng-process.jpg',
+      kicker: 'LWC Process Engineering', heightVh: 460,
+      beats: [
+        { t: 'It starts with raw ore.',        p: 'Every operation begins with the material — and the money — in the ground.' },
+        { t: 'We move earth to unlock value.',  p: 'Extraction at scale, where efficiency is measured in millions.' },
+        { t: 'We engineer the process.',        p: 'From mineral processing to metal recovery, across the value chain.' },
+        { t: 'Inside the plant.',               p: 'Where recovery, throughput and cost are won or lost.' },
+        { t: 'We read where value is lost.',    p: 'Engineering plus AI turn plant data into insight, in real time.' },
+        { t: 'From ore to metal — measured.',   p: 'Practical solutions that deliver value you can bank.' },
       ],
     },
     vVideo: '/v-smelt-4x3.mp4', vPoster: '/s1-smelt.jpg', vVariant: 'tablet', vSide: 'left',
@@ -28,28 +29,56 @@ export const scrollFrames = {
     ],
   },
   intelligence: {
-    chero: {
-      video: '/v-intel-montage.mp4', poster: '/p-intel-montage.jpg',
-      kicker: 'Division 02 · LWC Intelligence', title: 'From data to decisions.', sub: 'AI · Data · Automation · Simulation',
+    scrub: {
+      frames: { dir: '/f-intel', count: 144 }, video: '/v-intel-montage.mp4', poster: '/p-intel-montage.jpg',
+      kicker: 'LWC Intelligence', heightVh: 320,
+      beats: [
+        { t: 'From data to decisions.',        p: 'AI, data, automation and simulation.' },
+        { t: 'Engineering + AI, in real time.', p: 'We read where value is lost, as it happens.' },
+        { t: 'Insight you can act on.',         p: 'Dashboards, forecasts and digital twins.' },
+      ],
     },
     vVideo: '/v-cap-intelligence.mp4', vPoster: '/cap-intelligence.jpg', vVariant: 'phone', vSide: 'right',
     vTitle: 'From data to decisions.', vSub: 'AI, dashboards and digital twins that turn plant data into action.',
   },
   digital: {
-    chero: {
-      video: '/v-digital-energy.mp4', poster: '/p-digital-energy.jpg',
-      kicker: 'Division 03 · LWC Digital', title: 'Impossible to ignore.',
-      sub: 'Websites, 3D and video — like this energy-company story we produced.',
+    scrub: {
+      frames: { dir: '/f-digital', count: 148 }, video: '/v-digital-energy.mp4', poster: '/p-digital-energy.jpg',
+      kicker: 'LWC Digital', heightVh: 340,
+      beats: [
+        { t: 'We tell the story that sells.', p: 'A case study — presenting an energy company’s services, our way.' },
+        { t: 'From install to impact.',       p: 'Premium video and 3D that make the work shine.' },
+        { t: 'Powered, day and night.',       p: 'Websites, 3D and commercial video.' },
+        { t: 'Impossible to ignore.',         p: 'Digital experiences that carry your value.' },
+      ],
     },
     vVideo: '/v-digital-energy.mp4', vPoster: '/p-digital-energy.jpg', vVariant: 'tablet', vSide: 'right',
     vTitle: 'We tell the story that sells.', vSub: 'Premium digital experiences that make your value impossible to ignore.',
   },
   academy: {
-    chero: {
-      video: '/v-cap-academy.mp4', poster: '/cap-academy.jpg',
-      kicker: 'Division 04 · LWC Academy', title: 'We build the next generation.', sub: 'Research · Training · Enablement',
+    scrub: {
+      frames: { dir: '/f-academy', count: 101 }, video: '/v-cap-academy.mp4', poster: '/cap-academy.jpg',
+      kicker: 'LWC Academy', heightVh: 260,
+      beats: [
+        { t: 'We build the next generation.',   p: 'Research mentoring and AI training — ethically.' },
+        { t: 'Do better research, in less time.', p: 'Across the whole research journey.' },
+      ],
     },
     vVideo: '/v-cap-academy.mp4', vPoster: '/cap-academy.jpg', vVariant: 'phone', vSide: 'right',
     vTitle: 'We build the next generation.', vSub: 'Research mentoring and AI training — ethically, never doing your work for you.',
   },
+}
+
+export const homeHero = {
+  frames: { dir: '/f-home', count: 149 }, video: '/v-home-montage.mp4', poster: '/p-home-montage.jpg',
+  kicker: 'King of Engineering Solutions', heightVh: 340,
+  beats: [
+    { t: 'Engineering, intelligence\nand practical solutions.', p: 'We turn engineering, data and technology into measurable results — for businesses, mines and industry across South Africa and the DRC.' },
+    { t: 'Four capabilities. One team.', p: 'Engineering · Intelligence · Digital · Research.' },
+    { t: 'Measurable value.', p: 'From ore to metal, from data to decisions.' },
+  ],
+  cta: [
+    { label: 'Start with a conversation', href: '#contact' },
+    { label: 'Explore our divisions', href: '#divisions', ghost: true },
+  ],
 }

@@ -49,14 +49,12 @@ export default function ScrollHero({ frames, kicker, title, sub, heightVh = 320,
                 </div>
               ))}
             </div>
-            <div className="shero__cue" aria-hidden="true">Scroll the story</div>
           </>
         ) : (
           <div className="container shero__in">
             {kicker && <div className="kicker">{kicker}</div>}
             <H className={heading === 'h1' ? 'display shero__title' : 'h2 shero__title'}>{title}</H>
             {sub && <p className="shero__sub">{sub}</p>}
-            <div className="shero__cue" aria-hidden="true">Scroll</div>
           </div>
         )}
       </div>
