@@ -1,8 +1,9 @@
 import { useEffect, useRef } from 'react'
 
-// Second hero: a phone-framed 9:16 MOVING video (auto-plays while on screen) with a
-// headline beside it. Plays only in view to save resources.
-export default function PhoneHero({ video, poster, kicker, title, sub }) {
+// Second hero: a MOVING video inside a device frame (phone 9:16 or tablet 4:3),
+// placed on the right (default) or left, with a headline beside it. The clip
+// auto-plays only while on screen.
+export default function PhoneHero({ video, poster, kicker, title, sub, variant = 'phone', side = 'right' }) {
   const v = useRef(null)
   useEffect(() => {
     const el = v.current
@@ -18,8 +19,14 @@ export default function PhoneHero({ video, poster, kicker, title, sub }) {
     return () => io.disconnect()
   }, [])
 
+  const isTablet = variant === 'tablet'
+  const frameClass = isTablet ? 'tablet' : 'phone'
+  const camClass = isTablet ? 'tablet__cam' : 'phone__notch'
+  const vidClass = isTablet ? 'tablet__cv' : 'phone__cv'
+  const posterSrc = poster && poster.endsWith('.jpg') ? poster.slice(0, -4) + '-960.webp' : poster
+
   return (
-    <section className="phero">
+    <section className={`phero phero--${side}`}>
       <div className="container phero__grid">
         <div className="phero__txt">
           {kicker && <div className="kicker">{kicker}</div>}
@@ -27,9 +34,9 @@ export default function PhoneHero({ video, poster, kicker, title, sub }) {
           <div className="rule" />
           {sub && <p className="lead">{sub}</p>}
         </div>
-        <div className="phone">
-          <div className="phone__notch" />
-          <video ref={v} className="phone__cv" poster={poster && poster.endsWith('.jpg') ? poster.slice(0, -4) + '-960.webp' : poster} muted loop playsInline preload="none">
+        <div className={frameClass}>
+          <div className={camClass} />
+          <video ref={v} className={vidClass} poster={posterSrc} muted loop playsInline preload="none">
             <source src={video.replace(/\.mp4$/, '.webm')} type="video/webm" />
             <source src={video} type="video/mp4" />
           </video>

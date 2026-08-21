@@ -11,10 +11,21 @@ export function useFrameScrub(secRef, cvRef, dir, count) {
 
     let idx = -1
 
+    const loaded = (im) => im && im.complete && im.naturalWidth
     const draw = (i) => {
       const c = cvRef.current
-      const im = cache.get(i)
-      if (!c || !im || !im.complete || !im.naturalWidth) return
+      if (!c) return
+      let im = cache.get(i)
+      if (!loaded(im)) {
+        // fast-scroll fallback: show the nearest already-loaded frame
+        for (let d = 1; d <= 24; d++) {
+          const a = cache.get(i - d)
+          if (loaded(a)) { im = a; break }
+          const b = cache.get(i + d)
+          if (loaded(b)) { im = b; break }
+        }
+      }
+      if (!loaded(im)) return
       const dpr = Math.min(window.devicePixelRatio || 1, 2)
       const w = c.clientWidth
       const h = c.clientHeight
@@ -56,8 +67,8 @@ export function useFrameScrub(secRef, cvRef, dir, count) {
       return () => window.removeEventListener('resize', onResize)
     }
 
-    const AHEAD = 8
-    const BEHIND = 3
+    const AHEAD = 16
+    const BEHIND = 4
     let raf = 0
     const render = () => {
       const el = secRef.current
@@ -72,6 +83,17 @@ export function useFrameScrub(secRef, cvRef, dir, count) {
       if (raf) return
       raf = requestAnimationFrame(() => { raf = 0; render() })
     }
+    // Progressive background preload so a dense sequence stays smooth even on a
+    // fast scroll (the sliding window covers the current position; this fills the
+    // rest during idle time). Desktop only — the static path above already returned.
+    let pre = 0
+    const idle = window.requestIdleCallback || ((cb) => setTimeout(cb, 24))
+    const preloadNext = () => {
+      for (let n = 0; n < 3 && pre < count; n++) load(pre++)
+      if (pre < count) idle(preloadNext)
+    }
+    idle(preloadNext)
+
     window.addEventListener('scroll', onScroll, { passive: true })
     window.addEventListener('resize', onScroll)
     render()

@@ -26,10 +26,19 @@ export default function Division({ slug }) {
   return (
     <>
       {/* FIRST HERO — scroll-scrubbed horizontal (only scroll animates) */}
-      {sf && <ScrollHero frames={sf.h} kicker={`Division ${d.no} · ${d.name}`} title={sf.title} sub={sf.sub} />}
+      {sf && (
+        <ScrollHero
+          frames={sf.h}
+          heightVh={sf.heroHeight || 320}
+          kicker={sf.kicker || `Division ${d.no} · ${d.name}`}
+          title={sf.title}
+          sub={sf.sub}
+          captions={sf.captions}
+        />
+      )}
 
-      {/* SECOND HERO — phone-framed vertical, MOVING video */}
-      {sf && <PhoneHero video={sf.vVideo} poster={sf.vPoster} kicker="In motion" title={sf.vTitle} sub={sf.vSub} />}
+      {/* SECOND HERO — moving video in a device frame (phone or tablet) */}
+      {sf && <PhoneHero video={sf.vVideo} poster={sf.vPoster} kicker="In motion" title={sf.vTitle} sub={sf.vSub} variant={sf.vVariant} side={sf.vSide} />}
 
       <section className="section">
         <div className="container">

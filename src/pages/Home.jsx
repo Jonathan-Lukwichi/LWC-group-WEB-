@@ -5,8 +5,6 @@ import Reveal from '../components/Reveal'
 import HeroVideo from '../components/HeroVideo'
 import HeroBand from '../components/HeroBand'
 import ScrollHero from '../components/ScrollHero'
-import Cinematic from '../components/Cinematic'
-import { scenario1 } from '../data/scenarios'
 
 const Phone = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
@@ -96,9 +94,6 @@ export default function Home() {
         </div>
       </section>
       {divisions.map((d, i) => <DivisionSection key={d.slug} d={d} i={i} />)}
-
-      {/* 4 — CINEMATIC scenario 1 (shortened) */}
-      <Cinematic {...scenario1} />
 
       {/* 5 — HOW WE WORK */}
       <section className="section section--alt" id="approach">
