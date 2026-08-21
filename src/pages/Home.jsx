@@ -1,4 +1,5 @@
 import { Fragment } from 'react'
+import { Link } from 'react-router-dom'
 import { home, divisions, team, contact, brand } from '../data/content'
 import { srcSet } from '../lib/img'
 import Reveal from '../components/Reveal'
@@ -22,42 +23,6 @@ const CRED = [
   { b: '4 Languages', s: 'EN · FR · Swahili · Lingala' },
   { b: 'Registered', s: 'SA company · Reg 2026/653840/07' },
 ]
-
-function DivisionSection({ d, i }) {
-  const caps = d.deliver || d.services || (d.offers && d.offers.map((o) => o.t)) || []
-  const rev = i % 2 === 1
-  return (
-    <section className={`section ${i % 2 === 1 ? 'section--alt' : ''}`} id={d.slug}>
-      <div className={`container split ${rev ? 'rev' : ''}`}>
-        <Reveal className="split__img"><img src={d.hero} srcSet={srcSet(d.hero)} sizes="(min-width:900px) 50vw, 100vw" alt={d.name} loading="lazy" decoding="async" /></Reveal>
-        <Reveal className="split__txt" delay={80}>
-          <div className="kicker">Division {d.no} · {d.name}</div>
-          <h2 className="h2">{d.lead}</h2>
-          <div className="rule" />
-          <p className="lead">{d.intro}</p>
-          {d.ladder && (
-            <p className="small" style={{ marginTop: 4, color: 'var(--gold-hi)', letterSpacing: '.02em' }}>
-              {d.ladder.join('  →  ')}
-            </p>
-          )}
-          <div className="tags" style={{ marginTop: 18 }}>
-            {caps.map((c) => <span key={c}>{c}</span>)}
-          </div>
-          {d.tools && (
-            <div className="tags" style={{ marginTop: 10 }}>
-              {d.tools.map((t) => <span key={t} style={{ opacity: 0.85 }}>{t}</span>)}
-            </div>
-          )}
-          {d.promise && (
-            <div className="promise" style={{ marginTop: 18 }}>
-              <strong style={{ color: 'var(--gold-hi)' }}>Our promise: </strong>{d.promise}
-            </div>
-          )}
-        </Reveal>
-      </div>
-    </section>
-  )
-}
 
 export default function Home() {
   const h = home
@@ -86,14 +51,30 @@ export default function Home() {
         kicker="What we do"
         title={<>Four capabilities. One purpose: <span className="gold-text">create measurable value.</span></>}
       />
-      <section className="section" style={{ paddingBottom: 0 }}>
-        <div className="container center">
-          <Reveal className="shead center" style={{ margin: '0 auto' }}>
+      <section className="section">
+        <div className="container">
+          <Reveal className="shead center" style={{ margin: '0 auto', textAlign: 'center' }}>
             <p className="lead" style={{ margin: '0 auto' }}>{h.about.body}</p>
           </Reveal>
+          <div className="grid g4" style={{ marginTop: 'clamp(36px,6vh,60px)' }}>
+            {divisions.map((d, i) => (
+              <Reveal key={d.slug} delay={i * 80}>
+                <Link to={`/${d.slug}`} className="dcard">
+                  <div className="dcard__img" style={{ backgroundImage: `url(${d.hero.replace('.jpg', '-480.webp')})` }} />
+                  <div className="dcard__scrim" />
+                  <div className="dcard__body">
+                    <div className="dcard__no">{d.no}</div>
+                    <div className="dcard__tag">{d.tag}</div>
+                    <h3 className="dcard__t">{d.name}</h3>
+                    <p className="dcard__p">{d.lead}</p>
+                    <span className="dcard__go">Explore →</span>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
-      {divisions.map((d, i) => <DivisionSection key={d.slug} d={d} i={i} />)}
 
       {/* 5 — HOW WE WORK */}
       <section className="section section--alt" id="approach">
