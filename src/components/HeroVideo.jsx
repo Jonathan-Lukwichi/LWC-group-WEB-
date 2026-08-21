@@ -66,7 +66,7 @@ export default function HeroVideo() {
           <a className="btn btn--ghost" href="#divisions">Explore our divisions</a>
         </div>
       </div>
-      <a className="hero3d__cue" href="#about" aria-label="Scroll down">
+      <a className="hero3d__cue" href="#divisions" aria-label="Scroll to what we do">
         <span>Scroll</span>
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M6 13l6 6 6-6" /></svg>
       </a>
