@@ -3,9 +3,18 @@ import { Link } from 'react-router-dom'
 import { home, divisions, team, contact, brand } from '../data/content'
 import { srcSet } from '../lib/img'
 import Reveal from '../components/Reveal'
-import HeroVideo from '../components/HeroVideo'
+import CarouselHero from '../components/CarouselHero'
 import HeroBand from '../components/HeroBand'
 import ScrollHero from '../components/ScrollHero'
+import CardMedia from '../components/CardMedia'
+
+// Animated background clip + poster for each division card.
+const CARD_MEDIA = {
+  engineering: { video: '/v-cap-engineering.mp4', poster: '/cap-engineering-480.webp' },
+  intelligence: { video: '/v-cap-intelligence.mp4', poster: '/cap-intelligence-480.webp' },
+  digital: { video: '/v-digital-energy.mp4', poster: '/p-digital-energy.jpg' },
+  academy: { video: '/v-cap-academy.mp4', poster: '/cap-academy-480.webp' },
+}
 
 const Phone = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
@@ -28,8 +37,15 @@ export default function Home() {
   const h = home
   return (
     <>
-      {/* 1 — VIDEO HERO */}
-      <HeroVideo />
+      {/* 1 — CAROUSEL HERO (looping brand montage, slows on scroll) */}
+      <CarouselHero
+        id="top"
+        video="/v-home-montage.mp4"
+        poster="/p-home-montage.jpg"
+        kicker={h.hero.kicker}
+        title={h.hero.title}
+        sub={h.hero.sub}
+      />
 
       {/* 2 — CREDIBILITY STRIP */}
       <section className="credstrip" aria-label="LWC Group at a glance">
@@ -60,7 +76,7 @@ export default function Home() {
             {divisions.map((d, i) => (
               <Reveal key={d.slug} delay={i * 80}>
                 <Link to={`/${d.slug}`} className="dcard">
-                  <div className="dcard__img" style={{ backgroundImage: `url(${d.hero.replace('.jpg', '-480.webp')})` }} />
+                  <CardMedia video={CARD_MEDIA[d.slug].video} poster={CARD_MEDIA[d.slug].poster} />
                   <div className="dcard__scrim" />
                   <div className="dcard__body">
                     <div className="dcard__no">{d.no}</div>
@@ -153,8 +169,8 @@ export default function Home() {
 
       {/* 10 — CLOSING CTA BAND */}
       <HeroBand
-        video="/v-s1-smelt.mp4"
-        poster="/s1-smelt.jpg"
+        video="/v-owners.mp4"
+        poster="/p-owners.jpg"
         kicker="Let's build"
         title={<>Ready to unlock the value <span className="gold-text">in your operation?</span></>}
         sub="Engineering · Intelligence · Digital · Research — one team, measurable results."

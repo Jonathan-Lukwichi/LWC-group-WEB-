@@ -3,8 +3,9 @@ import { Link } from 'react-router-dom'
 import { divisions } from '../data/content'
 import { scrollFrames } from '../data/scrollFrames'
 import Reveal from '../components/Reveal'
-import ScrollHero from '../components/ScrollHero'
+import CarouselHero from '../components/CarouselHero'
 import PhoneHero from '../components/PhoneHero'
+import Carousel from '../components/Carousel'
 
 function Chain({ items }) {
   return (
@@ -25,17 +26,8 @@ export default function Division({ slug }) {
   const sf = scrollFrames[slug]
   return (
     <>
-      {/* FIRST HERO — scroll-scrubbed horizontal (only scroll animates) */}
-      {sf && (
-        <ScrollHero
-          frames={sf.h}
-          heightVh={sf.heroHeight || 320}
-          kicker={sf.kicker || `Division ${d.no} · ${d.name}`}
-          title={sf.title}
-          sub={sf.sub}
-          captions={sf.captions}
-        />
-      )}
+      {/* FIRST HERO — looping "carousel" video, slows on scroll */}
+      {sf && sf.chero && <CarouselHero {...sf.chero} />}
 
       {/* SECOND HERO — moving video in a device frame (phone or tablet) */}
       {sf && <PhoneHero video={sf.vVideo} poster={sf.vPoster} kicker="In motion" title={sf.vTitle} sub={sf.vSub} variant={sf.vVariant} side={sf.vSide} />}
@@ -111,6 +103,11 @@ export default function Division({ slug }) {
 
       <section className="section ctaband center">
         <div className="container">
+          {sf && sf.carousel && (
+            <Reveal style={{ marginBottom: 'clamp(30px,5vh,52px)' }}>
+              <Carousel slides={sf.carousel} />
+            </Reveal>
+          )}
           <Reveal>
             <h2 className="h2">Ready to explore {d.name}?</h2>
             <div className="rule center" />

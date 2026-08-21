@@ -1,39 +1,55 @@
-// Per-service heroes:
-//  h      = scroll-scrubbed horizontal frame set (/public/f-<svc>-h). Counts must match disk.
-//  vVideo = MOVING 9:16 clip auto-played inside the phone (second hero). vPoster = its still.
+// Per-service heroes.
+//  chero  = looping "carousel" video hero (auto-plays, slows on scroll). Optional
+//           time-synced captions {at, t, p}. Otherwise a title/sub.
+//  vVideo = second hero clip in a device frame (phone 9:16 or tablet 4:3),
+//           vVariant 'phone'|'tablet', vSide 'left'|'right', with vTitle/vSub.
 export const scrollFrames = {
   engineering: {
-    h: { dir: '/f-eng-process-h', count: 186 },
-    heroHeight: 420,
-    kicker: 'LWC Process Engineering',
-    captions: [
-      { t: 'It starts with raw ore.',        p: 'Every operation begins with the material — and the money — in the ground.' },
-      { t: 'We move earth to unlock value.',  p: 'Extraction at scale, where efficiency is measured in millions.' },
-      { t: 'We engineer the process.',        p: 'From mineral processing to metal recovery, across the value chain.' },
-      { t: 'Inside the plant.',               p: 'Where recovery, throughput and cost are won or lost.' },
-      { t: 'We read where value is lost.',    p: 'Engineering plus AI turn plant data into insight, in real time.' },
-      { t: 'From ore to metal — measured.',   p: 'Practical solutions that deliver value you can bank.' },
-    ],
+    chero: {
+      video: '/v-eng-process.mp4', poster: '/p-eng-process.jpg', kicker: 'LWC Process Engineering',
+      captions: [
+        { at: 0,  t: 'It starts with raw ore.',        p: 'Every operation begins with the material — and the money — in the ground.' },
+        { at: 5,  t: 'We move earth to unlock value.',  p: 'Extraction at scale, where efficiency is measured in millions.' },
+        { at: 9,  t: 'We engineer the process.',        p: 'From mineral processing to metal recovery, across the value chain.' },
+        { at: 14, t: 'Inside the plant.',               p: 'Where recovery, throughput and cost are won or lost.' },
+        { at: 19, t: 'We read where value is lost.',    p: 'Engineering plus AI turn plant data into insight, in real time.' },
+        { at: 24, t: 'From ore to metal — measured.',   p: 'Practical solutions that deliver value you can bank.' },
+      ],
+    },
     vVideo: '/v-smelt-4x3.mp4', vPoster: '/s1-smelt.jpg', vVariant: 'tablet', vSide: 'left',
-    title: 'LWC Process Engineering', sub: 'Mining · Metallurgy · Process Optimisation',
     vTitle: 'From ore to measurable value.', vSub: 'Optimise recovery, throughput and cost — proven in the numbers.',
+    carousel: [
+      { video: '/v-cap-engineering.mp4', img: '/cap-engineering.jpg', label: 'Engineering at the plant' },
+      { img: '/s1-ore.jpg',     label: 'Raw ore' },
+      { img: '/p-mine-ops.jpg', label: 'Extraction at scale' },
+      { img: '/s1-smelt.jpg',   label: 'Smelting & recovery' },
+      { img: '/s1-process.jpg', label: 'Inside the plant' },
+      { img: '/s1-metal.jpg',   label: 'From ore to metal' },
+    ],
   },
   intelligence: {
-    h: { dir: '/f-intelligence-h', count: 44 },
-    vVideo: '/v-int-9x16.mp4', vPoster: '/cap-intelligence.jpg',
-    title: 'LWC Intelligence', sub: 'AI · Data · Automation · Simulation',
+    chero: {
+      video: '/v-intel-montage.mp4', poster: '/p-intel-montage.jpg',
+      kicker: 'Division 02 · LWC Intelligence', title: 'From data to decisions.', sub: 'AI · Data · Automation · Simulation',
+    },
+    vVideo: '/v-cap-intelligence.mp4', vPoster: '/cap-intelligence.jpg', vVariant: 'phone', vSide: 'right',
     vTitle: 'From data to decisions.', vSub: 'AI, dashboards and digital twins that turn plant data into action.',
   },
   digital: {
-    h: { dir: '/f-digital-h', count: 55 },
-    vVideo: '/v-dig-9x16.mp4', vPoster: '/cap-digital.jpg',
-    title: 'LWC Digital', sub: 'Websites · 3D · Video · Experiences',
-    vTitle: 'Impossible to ignore.', vSub: 'Premium websites, 3D and commercial video that sell your value.',
+    chero: {
+      video: '/v-digital-energy.mp4', poster: '/p-digital-energy.jpg',
+      kicker: 'Division 03 · LWC Digital', title: 'Impossible to ignore.',
+      sub: 'Websites, 3D and video — like this energy-company story we produced.',
+    },
+    vVideo: '/v-digital-energy.mp4', vPoster: '/p-digital-energy.jpg', vVariant: 'tablet', vSide: 'right',
+    vTitle: 'We tell the story that sells.', vSub: 'Premium digital experiences that make your value impossible to ignore.',
   },
   academy: {
-    h: { dir: '/f-academy-h', count: 55 },
-    vVideo: '/v-acad-9x16.mp4', vPoster: '/cap-academy.jpg',
-    title: 'LWC Academy', sub: 'Research · Training · Enablement',
+    chero: {
+      video: '/v-cap-academy.mp4', poster: '/cap-academy.jpg',
+      kicker: 'Division 04 · LWC Academy', title: 'We build the next generation.', sub: 'Research · Training · Enablement',
+    },
+    vVideo: '/v-cap-academy.mp4', vPoster: '/cap-academy.jpg', vVariant: 'phone', vSide: 'right',
     vTitle: 'We build the next generation.', vSub: 'Research mentoring and AI training — ethically, never doing your work for you.',
   },
 }
