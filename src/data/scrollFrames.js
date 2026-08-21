@@ -3,9 +3,9 @@
 //  vVideo = MOVING 9:16 clip auto-played inside the phone (second hero). vPoster = its still.
 export const scrollFrames = {
   engineering: {
-    h: { dir: '/f-engineering-h', count: 44 },
-    vVideo: '/v-eng-9x16.mp4', vPoster: '/cap-engineering.jpg',
-    title: 'LWC Engineering', sub: 'Mining · Metallurgy · Process Optimisation',
+    h: { dir: '/f-eng-ore-h', count: 45 },
+    vVideo: '/v-smelt-9x16.mp4', vPoster: '/s1-smelt.jpg',
+    title: 'LWC Process Engineering', sub: 'Mining · Metallurgy · Process Optimisation',
     vTitle: 'From ore to measurable value.', vSub: 'Optimise recovery, throughput and cost — proven in the numbers.',
   },
   intelligence: {
