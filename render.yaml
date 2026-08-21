@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: lwc-group
+    runtime: static
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
+    pullRequestPreviewsEnabled: true
+    # SPA: serve index.html for client-side routes (/engineering, /intelligence, …).
+    # Render serves a real file when one exists, so assets are untouched.
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
+    # Long-cache the immutable media + hero frame sequences.
+    headers:
+      - path: /*.webp
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /*.mp4
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /*.webm
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /*.jpg
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
+      - path: /*.png
+        name: Cache-Control
+        value: public, max-age=31536000, immutable
