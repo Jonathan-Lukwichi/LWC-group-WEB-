@@ -17,7 +17,7 @@ export const scrollFrames = {
         { t: 'From ore to metal — measured.',   p: 'Practical solutions that deliver value you can bank.' },
       ],
     },
-    vVideo: '/v-smelt-4x3.mp4', vPoster: '/s1-smelt.jpg', vVariant: 'tablet', vSide: 'left',
+    vVideo: '/v-smelt-9x16.mp4', vPoster: '/s1-smelt.jpg', vVariant: 'phone', vSide: 'right',
     vTitle: 'From ore to measurable value.', vSub: 'Optimise recovery, throughput and cost — proven in the numbers.',
     carousel: [
       { video: '/v-cap-engineering.mp4', img: '/cap-engineering.jpg', label: 'Engineering at the plant' },
@@ -53,7 +53,7 @@ export const scrollFrames = {
         { t: 'Impossible to ignore.',         p: 'Websites, 3D and commercial video that carry your value.' },
       ],
     },
-    vVideo: '/v-digital-energy.mp4', vPoster: '/p-digital-energy.jpg', vVariant: 'tablet', vSide: 'right',
+    vVideo: '/v-digital-9x16.mp4', vPoster: '/p-digital-energy.jpg', vVariant: 'phone', vSide: 'right',
     vTitle: 'We tell the story that sells.', vSub: 'Premium digital experiences that make your value impossible to ignore.',
   },
   academy: {

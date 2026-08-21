@@ -163,11 +163,14 @@ p{margin:0 0 15px}
 .phero__txt{max-width:520px;margin:0 auto}
 .phero .rule{margin-left:auto;margin-right:auto}
 .phero__title{font-size:clamp(1.8rem,3.4vw,3rem)}
-.phone{justify-self:center;position:relative;width:min(300px,74vw);aspect-ratio:9/19.5;border-radius:38px;
-  background:#050506;border:1px solid rgba(212,175,55,.28);padding:10px;
-  box-shadow:0 40px 90px -40px rgba(0,0,0,.9), inset 0 0 0 2px rgba(255,255,255,.04)}
-.phone__notch{position:absolute;top:14px;left:50%;transform:translateX(-50%);width:96px;height:20px;border-radius:12px;background:#050506;z-index:3}
-.phone__cv{width:100%;height:100%;display:block;border-radius:30px;background:#0A0A0C;object-fit:cover}
+/* iPhone 14 Pro — graphite frame, thin bezel, Dynamic Island (per reference) */
+.phone{justify-self:center;position:relative;width:min(300px,74vw);aspect-ratio:9/19.5;border-radius:46px;
+  background:linear-gradient(145deg,#3c3c40 0%,#17171a 42%,#212125 100%);padding:8px;
+  box-shadow:0 46px 90px -40px rgba(0,0,0,.92), inset 0 0 0 1.5px rgba(255,255,255,.08), 0 0 0 1px rgba(0,0,0,.55)}
+.phone::before{content:"";position:absolute;right:-2px;top:30%;width:3px;height:66px;border-radius:0 2px 2px 0;background:#26262a}
+.phone::after{content:"";position:absolute;left:-2px;top:24%;width:3px;height:34px;border-radius:2px 0 0 2px;background:#26262a;box-shadow:0 48px 0 #26262a}
+.phone__notch{position:absolute;top:15px;left:50%;transform:translateX(-50%);width:86px;height:25px;border-radius:13px;background:#000;z-index:3;box-shadow:0 0 0 1px rgba(255,255,255,.05)}
+.phone__cv{width:100%;height:100%;display:block;border-radius:40px;background:#0A0A0C;object-fit:cover}
 /* landscape tablet (iPad) frame */
 .tablet{justify-self:center;position:relative;width:min(560px,90vw);aspect-ratio:4/3;border-radius:26px;
   background:#050506;border:1px solid rgba(212,175,55,.28);padding:14px;
