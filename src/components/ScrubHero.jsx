@@ -21,10 +21,19 @@ export default function ScrubHero({ id, frames, video, poster, kicker, beats = [
   const beatsRef = useRef(null)
   const vidRef = useRef(null)
   const [mobile, setMobile] = useState(false)
+  const [active, setActive] = useState(0)
 
   useEffect(() => {
     setMobile(window.matchMedia && window.matchMedia('(pointer:coarse)').matches)
   }, [])
+
+  // On mobile the film is a plain looping video, so cycle the chapter captions
+  // on a timer — otherwise only the first line ever shows.
+  useEffect(() => {
+    if (!mobile || beats.length <= 1) return
+    const id = setInterval(() => setActive((a) => (a + 1) % beats.length), 3800)
+    return () => clearInterval(id)
+  }, [mobile, beats.length])
 
   // Windows [fadeInStart, fullFrom, fullTo, fadeOutEnd] as progress fractions.
   const WINDOWS = beats.map((b, i, arr) => {
@@ -139,8 +148,15 @@ export default function ScrubHero({ id, frames, video, poster, kicker, beats = [
         </video>
         <div className="scrub__veil" />
         {kicker && <div className="scrub__label">{kicker}</div>}
-        {beats[0] && (
-          <div className="scrub__caps"><div className="scrub__cap on"><h1 className="display">{beats[0].t}</h1>{beats[0].p && <p className="lead">{beats[0].p}</p>}</div></div>
+        {beats.length > 0 && (
+          <div className="scrub__caps">
+            {beats.map((b, i) => (
+              <div className={`scrub__cap ${i === active ? 'on' : ''}`} key={i}>
+                <h1 className="display">{b.t}</h1>
+                {b.p && <p className="lead">{b.p}</p>}
+              </div>
+            ))}
+          </div>
         )}
         {CTA}
       </section>

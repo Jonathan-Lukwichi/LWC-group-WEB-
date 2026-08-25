@@ -226,7 +226,11 @@ p{margin:0 0 15px}
 .scrub__caps{position:absolute;inset:0;z-index:3;display:grid;place-items:end center;text-align:center;pointer-events:none;
   padding:0 24px clamp(92px,16vh,160px)}
 .scrub__cap{grid-area:1/1;max-width:900px;opacity:0;will-change:opacity,transform}
-.scrub--static .scrub__cap{opacity:1}
+/* mobile: captions cross-fade on a timer (transition scoped here so it never
+   fights the desktop rAF, which sets opacity inline every frame) */
+.scrub--static .scrub__cap{opacity:0;transform:translateY(12px);transition:opacity .7s ease,transform .7s ease}
+.scrub--static .scrub__cap.on{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.scrub--static .scrub__cap{transition:opacity .3s ease}.scrub--static .scrub__cap.on{transform:none}}
 .scrub__cap h1{color:#fff;text-shadow:0 3px 40px rgba(0,0,0,.6);font-size:clamp(2.2rem,5.6vw,4.6rem);line-height:1.04;white-space:pre-line}
 .scrub__cap .lead{margin:16px auto 0;color:rgba(243,240,231,.92);max-width:52ch}
 .scrub__cta{position:absolute;left:0;right:0;bottom:clamp(30px,5vh,48px);z-index:4;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;padding:0 24px}
