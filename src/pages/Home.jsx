@@ -105,23 +105,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6 — PROVEN VALUE */}
-      <section className="section">
-        <div className="container split">
-          <Reveal className="split__txt">
-            <div className="kicker">{h.proof.kicker}</div>
-            <h2 className="h2">{h.proof.title}</h2>
-            <div className="rule" />
-            <p className="lead">{h.proof.body}</p>
-          </Reveal>
-          <Reveal className="kpi" delay={100}>
-            <div className="big gold-text">{h.proof.kpi}</div>
-            <div className="l">{h.proof.kpiLabel}</div>
-            <div className="d">{h.proof.kpiNote}</div>
-          </Reveal>
-        </div>
-      </section>
-
       {/* 8 + 9 — TEAM & CONTACT (merged) */}
       <section className="section section--alt" id="team">
         <div className="container">
