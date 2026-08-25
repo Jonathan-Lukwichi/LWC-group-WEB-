@@ -5,6 +5,9 @@ services:
     buildCommand: npm install && npm run build
     staticPublishPath: dist
     pullRequestPreviewsEnabled: true
+    domains:
+      - jlwanalytics.com
+      - www.jlwanalytics.com
     # SPA: serve index.html for client-side routes (/engineering, /intelligence, …).
     # Render serves a real file when one exists, so assets are untouched.
     routes:
