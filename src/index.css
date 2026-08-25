@@ -230,6 +230,10 @@ p{margin:0 0 15px}
 .scrub__cap h1{color:#fff;text-shadow:0 3px 40px rgba(0,0,0,.6);font-size:clamp(2.2rem,5.6vw,4.6rem);line-height:1.04;white-space:pre-line}
 .scrub__cap .lead{margin:16px auto 0;color:rgba(243,240,231,.92);max-width:52ch}
 .scrub__cta{position:absolute;left:0;right:0;bottom:clamp(30px,5vh,48px);z-index:4;display:flex;gap:14px;justify-content:center;flex-wrap:wrap;padding:0 24px}
+/* when the hero carries CTA buttons, lift the caption so text never sits behind
+   them (the two buttons stack on phones) */
+.scrub--cta .scrub__caps{padding-bottom:clamp(168px,26vh,240px)}
+@media(min-width:640px){.scrub--cta .scrub__caps{padding-bottom:clamp(150px,20vh,210px)}}
 
 /* full-viewport cinematic hero band */
 .band{position:relative;min-height:80vh;display:grid;place-items:center;overflow:hidden;text-align:center;isolation:isolate}

@@ -132,7 +132,7 @@ export default function ScrubHero({ id, frames, video, poster, kicker, beats = [
 
   if (mobile) {
     return (
-      <section className="scrub scrub--static" id={id}>
+      <section className={`scrub scrub--static ${cta ? 'scrub--cta' : ''}`} id={id}>
         <video ref={vidRef} className="scrub__vid" poster={poster} muted loop playsInline preload="none">
           <source src={video.replace(/\.mp4$/, '.webm')} type="video/webm" />
           <source src={video} type="video/mp4" />
@@ -148,7 +148,7 @@ export default function ScrubHero({ id, frames, video, poster, kicker, beats = [
   }
 
   return (
-    <section className="scrub" ref={secRef} id={id} style={{ height: `${heightVh}vh` }}>
+    <section className={`scrub ${cta ? 'scrub--cta' : ''}`} ref={secRef} id={id} style={{ height: `${heightVh}vh` }}>
       <div className="scrub__sticky">
         <canvas className="scrub__canvas" ref={canvasRef} aria-hidden="true" />
         <div className="scrub__veil" />
