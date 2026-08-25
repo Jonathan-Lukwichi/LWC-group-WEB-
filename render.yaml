@@ -6,8 +6,8 @@ services:
     staticPublishPath: dist
     pullRequestPreviewsEnabled: true
     domains:
+      - lwcgroup.jlwanalytics.com
       - jlwanalytics.com
-      - www.jlwanalytics.com
     # SPA: serve index.html for client-side routes (/engineering, /intelligence, …).
     # Render serves a real file when one exists, so assets are untouched.
     routes:
