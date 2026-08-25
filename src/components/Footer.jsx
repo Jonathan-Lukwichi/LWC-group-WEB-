@@ -24,7 +24,6 @@ export default function Footer() {
             </div>
             <div className="footer__col">
               <h4>{t.footer.company}</h4>
-              <Link to="/#team">{t.footer.team}</Link>
               <Link to="/#contact">{t.footer.contact}</Link>
             </div>
             <div className="footer__col">

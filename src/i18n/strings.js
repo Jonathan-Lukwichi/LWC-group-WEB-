@@ -1,6 +1,6 @@
 // UI micro-copy that lives inside components (not in the content data files).
 // Gold-accent titles are stored as { pre, gold, post } and rendered by a helper.
-// FR is a first draft — flag for client review.
+// FR is a first draft, flag for client review.
 export const strings = {
   en: {
     lang: { en: 'EN', fr: 'FR', aria: 'Switch language' },
@@ -25,7 +25,7 @@ export const strings = {
       languagesLine: 'South Africa · DRC · Languages: English · Français',
       ctaKicker: "Let's build",
       ctaTitle: { pre: 'Ready to unlock the value ', gold: 'in your operation?', post: '' },
-      ctaSub: 'Engineering · Intelligence · Digital · Research — one team, measurable results.',
+      ctaSub: 'Engineering · Intelligence · Digital · Research, one team, measurable results.',
       ctaBtn: 'Message us on WhatsApp',
     },
     division: {
@@ -65,7 +65,7 @@ export const strings = {
       languagesLine: 'Afrique du Sud · RDC · Langues : English · Français',
       ctaKicker: 'Construisons ensemble',
       ctaTitle: { pre: 'Prêt à libérer la valeur ', gold: 'de votre opération ?', post: '' },
-      ctaSub: 'Ingénierie · Intelligence · Numérique · Recherche — une équipe, des résultats mesurables.',
+      ctaSub: 'Ingénierie · Intelligence · Numérique · Recherche, une équipe, des résultats mesurables.',
       ctaBtn: 'Écrivez-nous sur WhatsApp',
     },
     division: {

@@ -1,7 +1,6 @@
 import { Fragment } from 'react'
 import { Link } from 'react-router-dom'
 import { useContent } from '../i18n/LangContext'
-import { srcSet } from '../lib/img'
 import Reveal from '../components/Reveal'
 import ScrubHero from '../components/ScrubHero'
 import HeroBand from '../components/HeroBand'
@@ -30,6 +29,10 @@ const Mail = () => (
 const Insta = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
     <rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none" /></svg>
+)
+const Whats = () => (
+  <svg viewBox="0 0 24 24" fill="currentColor" stroke="none">
+    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.46 1.32 4.97L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.06c-.25.69-1.44 1.32-1.98 1.36-.53.04-1.02.24-3.45-.72-2.9-1.14-4.73-4.14-4.87-4.33-.14-.19-1.16-1.54-1.16-2.94s.73-2.08 1-2.37c.25-.28.55-.35.73-.35.18 0 .37 0 .53.01.17.01.4-.06.62.48.25.6.85 2.08.92 2.23.07.14.12.31.02.5-.09.19-.14.31-.28.48-.14.16-.29.36-.42.49-.14.14-.28.28-.12.55.16.28.72 1.18 1.54 1.92 1.06.94 1.95 1.24 2.23 1.38.28.14.44.12.6-.07.16-.19.69-.8.87-1.08.18-.28.37-.23.62-.14.25.09 1.6.76 1.87.9.28.14.46.21.53.32.07.12.07.66-.18 1.35z" /></svg>
 )
 
 export default function Home() {
@@ -105,36 +108,35 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 8 + 9 — TEAM & CONTACT (merged) */}
+      {/* CONTACT */}
       <section className="section section--alt" id="team">
         <div className="container">
           <Reveal className="shead center" style={{ margin: '0 auto' }}>
-            <div className="kicker">{team.kicker}</div>
-            <h2 className="h2">{team.title}</h2>
+            <div className="kicker">{contact.kicker}</div>
+            <h2 className="h2">{contact.title}</h2>
             <div className="rule center" />
             <p className="lead" style={{ margin: '0 auto' }}>{contact.body}</p>
           </Reveal>
-          <div id="contact" className="grid g3" style={{ marginTop: 46 }}>
-            {team.members.map((m, i) => (
-              <Reveal key={m.name} className="pcard pcard--full" delay={i * 90}>
-                <div className="pcard__ph"><img src={m.photo} srcSet={srcSet(m.photo)} sizes="(min-width:900px) 33vw, 100vw" alt={m.name} loading="lazy" decoding="async" /></div>
-                <h3>{m.name}</h3>
-                <div className="role">{m.role}</div>
-                <p>{m.bio}</p>
-                <div className="pcard__contact">
-                  <a href={`https://wa.me/${m.phone.replace(/\D/g, '')}`} target="_blank" rel="noreferrer"><Phone />{m.phone}</a>
-                  <a href={`mailto:${m.email}`}><Mail />{m.email}</a>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-          <div className="orgcontact">
-            <a href={`mailto:${brand.email}`}><Mail />{brand.email}</a>
-            {brand.instagram && (
-              <a href={brand.instagram} target="_blank" rel="noreferrer"><Insta />{brand.instagramHandle || 'Instagram'}</a>
-            )}
-          </div>
-          <p className="center small" style={{ marginTop: 22, letterSpacing: '.1em', textTransform: 'uppercase' }}>
+
+          <Reveal id="contact" className="contactbox" delay={80}>
+            <div className="contactbox__row">
+              {team.members.map((m) => (
+                <a key={m.phone} href={`tel:${m.phone.replace(/\s/g, '')}`}><Phone />{m.phone}</a>
+              ))}
+            </div>
+            <div className="contactbox__rule" />
+            <div className="contactbox__row">
+              <a href={`mailto:${brand.email}`}><Mail />{brand.email}</a>
+              {brand.instagram && (
+                <a href={brand.instagram} target="_blank" rel="noreferrer"><Insta />{brand.instagramHandle || 'Instagram'}</a>
+              )}
+            </div>
+            <div className="contactbox__row">
+              <a className="btn" href={`https://wa.me/${brand.whatsapp}`} target="_blank" rel="noreferrer"><Whats />{t.home.ctaBtn}</a>
+            </div>
+          </Reveal>
+
+          <p className="center small" style={{ marginTop: 26, letterSpacing: '.1em', textTransform: 'uppercase' }}>
             {t.home.languagesLine}
           </p>
         </div>
