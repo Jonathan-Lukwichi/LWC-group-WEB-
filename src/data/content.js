@@ -79,7 +79,13 @@ export const divisions = [
       { t: 'AI & Machine Learning', items: ['Demand forecasting', 'Predictive models', 'Anomaly detection', 'AI automation', 'Decision support'] },
       { t: 'Simulation & Digital Twins', items: ['Discrete-event & agent-based', 'System dynamics (AnyLogic / SimPy)', 'Digital twins', 'Optimisation', 'Test before you invest'] },
     ],
-    tools: ['Python', 'Power BI', 'Azure ML', 'AnyLogic', 'SimPy', 'ONNX', 'Six Sigma'],
+    tools: [
+      'Programming for AI solutions & automation',
+      'Simulation software for process analysis & design',
+      'Dashboards & data visualisation',
+      'Cloud & machine-learning platforms',
+      'Continuous-improvement methods',
+    ],
     deliver: ['Dashboards', 'Forecasts', 'Optimisation', 'AI automations', 'Digital twins', 'Decision-support tools'],
   },
   {

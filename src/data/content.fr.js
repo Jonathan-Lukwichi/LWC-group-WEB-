@@ -70,7 +70,13 @@ const DIV_FR = {
       { t: 'IA & apprentissage automatique', items: ['Prévision de la demande', 'Modèles prédictifs', 'Détection d’anomalies', 'Automatisation par IA', 'Aide à la décision'] },
       { t: 'Simulation & jumeaux numériques', items: ['Événements discrets & agents', 'Dynamique des systèmes (AnyLogic / SimPy)', 'Jumeaux numériques', 'Optimisation', 'Tester avant d’investir'] },
     ],
-    tools: ['Python', 'Power BI', 'Azure ML', 'AnyLogic', 'SimPy', 'ONNX', 'Six Sigma'],
+    tools: [
+      'Programmation pour solutions IA & automatisation',
+      'Logiciels de simulation pour l’analyse et la conception de procédés',
+      'Tableaux de bord & visualisation de données',
+      'Plateformes cloud & apprentissage automatique',
+      'Méthodes d’amélioration continue',
+    ],
     deliver: ['Tableaux de bord', 'Prévisions', 'Optimisation', 'Automatisations IA', 'Jumeaux numériques', 'Outils d’aide à la décision'],
   },
   digital: {
