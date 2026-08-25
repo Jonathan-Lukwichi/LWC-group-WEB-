@@ -27,7 +27,7 @@ export default function Team() {
             ))}
           </div>
           <p className="center small" style={{ marginTop: 36, letterSpacing: '.1em', textTransform: 'uppercase' }}>
-            Languages: English · Français · Swahili · Lingala
+            Languages: English · Français
           </p>
           <div className="center" style={{ marginTop: 40 }}>
             <Link className="btn" to="/contact">Work with us</Link>

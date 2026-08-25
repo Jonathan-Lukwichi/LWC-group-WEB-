@@ -98,7 +98,7 @@ const ROLES_FR = ['Fondateur & PDG', 'Directeur · Mines & Métallurgie', 'Direc
 const BIOS_FR = [
   'Candidat au MSc en génie industriel ; IA, données & simulation — transformer des données complexes et des défis opérationnels en solutions concrètes.',
   'BEng Tech (Hons) en génie métallurgique — métallurgie extractive, traitement du minerai, hydrométallurgie et optimisation des procédés.',
-  'Finance, administration et relations clients. EN · FR · Swahili · Lingala.',
+  'Finance, administration et relations clients. EN · FR.',
 ]
 export const team = {
   kicker: 'Notre équipe',

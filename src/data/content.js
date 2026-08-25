@@ -111,7 +111,7 @@ export const team = {
   members: [
     { name: 'Jonathan Lukwichi', role: 'Founder & CEO', photo: '/team-jonathan.jpg', bio: 'MSc candidate in Industrial Engineering; AI, data & simulation — turning complex data and operational challenges into practical solutions.', email: 'jonathanlukwichi29@gmail.com', phone: '+27 84 731 4600' },
     { name: 'Christian Emmanuel Lukwichi', role: 'Director · Mining & Metallurgy', photo: '/team-christian.jpg', bio: 'BEng Tech (Hons) Metallurgical Engineering — extractive metallurgy, mineral processing, hydrometallurgy and process optimisation.', email: 'chrislukwichi@gmail.com', phone: '+27 61 660 2809' },
-    { name: 'Samuel Lukwichi', role: 'Director · Finance & Administration', photo: '/team-samuel.jpg', bio: 'Finance, administration and client relations. EN · FR · Swahili · Lingala.', email: 'samylukwichi@gmail.com', phone: '+27 84 746 2893' },
+    { name: 'Samuel Lukwichi', role: 'Director · Finance & Administration', photo: '/team-samuel.jpg', bio: 'Finance, administration and client relations. EN · FR.', email: 'samylukwichi@gmail.com', phone: '+27 84 746 2893' },
   ],
 }
 
