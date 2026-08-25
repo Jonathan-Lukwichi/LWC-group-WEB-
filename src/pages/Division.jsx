@@ -1,7 +1,6 @@
 import { Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import { divisions } from '../data/content'
-import { scrollFrames } from '../data/scrollFrames'
+import { useContent } from '../i18n/LangContext'
 import Reveal from '../components/Reveal'
 import ScrubHero from '../components/ScrubHero'
 import PhoneHero from '../components/PhoneHero'
@@ -21,16 +20,18 @@ function Chain({ items }) {
 }
 
 export default function Division({ slug }) {
+  const { divisions, scrollFrames, t } = useContent()
   const d = divisions.find((x) => x.slug === slug)
   if (!d) return null
   const sf = scrollFrames[slug]
+  const td = t.division
   return (
     <>
       {/* FIRST HERO — immersive scroll-film (canvas + scroll + idle auto-play) */}
       {sf && sf.scrub && <ScrubHero {...sf.scrub} />}
 
       {/* SECOND HERO — moving video in a device frame (phone or tablet) */}
-      {sf && <PhoneHero video={sf.vVideo} poster={sf.vPoster} kicker="In motion" title={sf.vTitle} sub={sf.vSub} variant={sf.vVariant} side={sf.vSide} />}
+      {sf && <PhoneHero video={sf.vVideo} poster={sf.vPoster} kicker={td.inMotion} title={sf.vTitle} sub={sf.vSub} variant={sf.vVariant} side={sf.vSide} />}
 
       <section className="section">
         <div className="container">
@@ -43,7 +44,7 @@ export default function Division({ slug }) {
 
           {d.ladder && (
             <div style={{ marginTop: 52 }}>
-              <Reveal><div className="kicker">The Data Value Ladder</div><p className="small" style={{ marginBottom: 22 }}>We climb only as far as it pays.</p></Reveal>
+              <Reveal><div className="kicker">{td.ladder}</div><p className="small" style={{ marginBottom: 22 }}>{td.ladderNote}</p></Reveal>
               <Chain items={d.ladder} />
             </div>
           )}
@@ -61,14 +62,14 @@ export default function Division({ slug }) {
 
           {d.chain && (
             <div style={{ marginTop: 64 }}>
-              <Reveal><div className="kicker">Minerals value chain</div><h3 className="h3" style={{ marginBottom: 26 }}>From ore to metal, every step matters.</h3></Reveal>
+              <Reveal><div className="kicker">{td.valueChain}</div><h3 className="h3" style={{ marginBottom: 26 }}>{td.valueChainTitle}</h3></Reveal>
               <Chain items={d.chain} />
             </div>
           )}
 
           {d.tools && (
             <Reveal style={{ marginTop: 52 }}>
-              <div className="kicker">Tools</div>
+              <div className="kicker">{td.tools}</div>
               <div className="tags">{d.tools.map((t) => <span key={t}>{t}</span>)}</div>
             </Reveal>
           )}
@@ -86,13 +87,13 @@ export default function Division({ slug }) {
           )}
           {d.promise && (
             <Reveal className="promise" style={{ marginTop: 26 }}>
-              <strong style={{ color: 'var(--gold-hi)' }}>Our promise: </strong>{d.promise}
+              <strong style={{ color: 'var(--gold-hi)' }}>{td.promise}</strong>{d.promise}
             </Reveal>
           )}
 
           {d.deliver && (
             <div style={{ marginTop: 60 }}>
-              <Reveal><div className="kicker">What we deliver</div></Reveal>
+              <Reveal><div className="kicker">{td.deliver}</div></Reveal>
               <div className="grid g3" style={{ marginTop: 16 }}>
                 {d.deliver.map((x, i) => <Reveal key={x} className="fcard" delay={i * 50}><h3 style={{ fontSize: 15 }}>{x}</h3></Reveal>)}
               </div>
@@ -109,11 +110,11 @@ export default function Division({ slug }) {
             </Reveal>
           )}
           <Reveal>
-            <h2 className="h2">Ready to explore {d.name}?</h2>
+            <h2 className="h2">{td.ready(d.name)}</h2>
             <div className="rule center" />
             <div style={{ display: 'flex', gap: 14, justifyContent: 'center', flexWrap: 'wrap', marginTop: 8 }}>
-              <Link className="btn" to="/#contact">Talk to us</Link>
-              <Link className="btn btn--ghost" to="/">Back to overview</Link>
+              <Link className="btn" to="/#contact">{td.talk}</Link>
+              <Link className="btn btn--ghost" to="/">{td.back}</Link>
             </div>
           </Reveal>
         </div>

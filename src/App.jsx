@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { LangProvider } from './i18n/LangContext'
 import Nav from './components/Nav'
 import Footer from './components/Footer'
 import Home from './pages/Home'
@@ -20,20 +21,22 @@ function ScrollManager() {
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <ScrollManager />
-      <Nav />
-      <main>
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/engineering" element={<Division slug="engineering" />} />
-          <Route path="/intelligence" element={<Division slug="intelligence" />} />
-          <Route path="/digital" element={<Division slug="digital" />} />
-          <Route path="/academy" element={<Division slug="academy" />} />
-          <Route path="*" element={<Home />} />
-        </Routes>
-      </main>
-      <Footer />
-    </BrowserRouter>
+    <LangProvider>
+      <BrowserRouter>
+        <ScrollManager />
+        <Nav />
+        <main>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/engineering" element={<Division slug="engineering" />} />
+            <Route path="/intelligence" element={<Division slug="intelligence" />} />
+            <Route path="/digital" element={<Division slug="digital" />} />
+            <Route path="/academy" element={<Division slug="academy" />} />
+            <Route path="*" element={<Home />} />
+          </Routes>
+        </main>
+        <Footer />
+      </BrowserRouter>
+    </LangProvider>
   )
 }

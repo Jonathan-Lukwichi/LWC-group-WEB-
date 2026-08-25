@@ -1,13 +1,15 @@
 import { Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import { home, divisions, team, contact, brand } from '../data/content'
+import { useContent } from '../i18n/LangContext'
 import { srcSet } from '../lib/img'
 import Reveal from '../components/Reveal'
 import ScrubHero from '../components/ScrubHero'
 import HeroBand from '../components/HeroBand'
 import ScrollHero from '../components/ScrollHero'
 import CardMedia from '../components/CardMedia'
-import { homeHero } from '../data/scrollFrames'
+
+// gold-accent title from a { pre, gold, post } record
+const gt = (o) => <>{o.pre}<span className="gold-text">{o.gold}</span>{o.post}</>
 
 // Animated background clip + poster for each division card.
 const CARD_MEDIA = {
@@ -25,17 +27,15 @@ const Mail = () => (
   <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
     <rect x="3" y="5" width="18" height="14" rx="2" /><path d="m3 7 9 6 9-6" /></svg>
 )
-
-// Credibility facts — answers "are these people real" right under the hero.
-const CRED = [
-  { b: '4 Divisions', s: 'Engineering · Intelligence · Digital · Academy' },
-  { b: '2 Countries', s: 'South Africa · DRC' },
-  { b: '4 Languages', s: 'EN · FR · Swahili · Lingala' },
-  { b: 'Registered', s: 'SA company · Reg 2026/653840/07' },
-]
+const Insta = () => (
+  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+    <rect x="3" y="3" width="18" height="18" rx="5" /><circle cx="12" cy="12" r="4" /><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor" stroke="none" /></svg>
+)
 
 export default function Home() {
+  const { home, divisions, team, contact, brand, homeHero, t } = useContent()
   const h = home
+  const CRED = t.home.cred
   return (
     <>
       {/* 1 — IMMERSIVE SCROLL-FILM HERO */}
@@ -58,8 +58,8 @@ export default function Home() {
         frames={{ dir: '/f-home-h', count: 40 }}
         heightVh={200}
         heading="h2"
-        kicker="What we do"
-        title={<>Four capabilities. One purpose: <span className="gold-text">create measurable value.</span></>}
+        kicker={t.home.whatWeDo}
+        title={gt(t.home.divisionsTitle)}
       />
       <section className="section">
         <div className="container">
@@ -77,7 +77,7 @@ export default function Home() {
                     <div className="dcard__tag">{d.tag}</div>
                     <h3 className="dcard__t">{d.name}</h3>
                     <p className="dcard__p">{d.lead}</p>
-                    <span className="dcard__go">Explore →</span>
+                    <span className="dcard__go">{t.home.explore}</span>
                   </div>
                 </Link>
               </Reveal>
@@ -90,8 +90,8 @@ export default function Home() {
       <section className="section section--alt" id="approach">
         <div className="container">
           <Reveal className="shead center" style={{ margin: '0 auto' }}>
-            <div className="kicker">How we work</div>
-            <h2 className="h2">From problem to <span className="gold-text">proven result.</span></h2>
+            <div className="kicker">{t.home.howWeWork}</div>
+            <h2 className="h2">{gt(t.home.howTitle)}</h2>
             <div className="rule center" />
           </Reveal>
           <Reveal className="chain" style={{ marginTop: 'clamp(40px,6vh,64px)' }}>
@@ -145,8 +145,14 @@ export default function Home() {
               </Reveal>
             ))}
           </div>
-          <p className="center small" style={{ marginTop: 34, letterSpacing: '.1em', textTransform: 'uppercase' }}>
-            {brand.regions} · Languages: English · Français · Swahili · Lingala
+          <div className="orgcontact">
+            <a href={`mailto:${brand.email}`}><Mail />{brand.email}</a>
+            {brand.instagram && (
+              <a href={brand.instagram} target="_blank" rel="noreferrer"><Insta />{brand.instagramHandle || 'Instagram'}</a>
+            )}
+          </div>
+          <p className="center small" style={{ marginTop: 22, letterSpacing: '.1em', textTransform: 'uppercase' }}>
+            {t.home.languagesLine}
           </p>
         </div>
       </section>
@@ -155,10 +161,10 @@ export default function Home() {
       <HeroBand
         video="/v-owners.mp4"
         poster="/p-owners.jpg"
-        kicker="Let's build"
-        title={<>Ready to unlock the value <span className="gold-text">in your operation?</span></>}
-        sub="Engineering · Intelligence · Digital · Research — one team, measurable results."
-        cta={{ href: `https://wa.me/${brand.whatsapp}`, label: 'Message us on WhatsApp' }}
+        kicker={t.home.ctaKicker}
+        title={gt(t.home.ctaTitle)}
+        sub={t.home.ctaSub}
+        cta={{ href: `https://wa.me/${brand.whatsapp}`, label: t.home.ctaBtn }}
       />
     </>
   )

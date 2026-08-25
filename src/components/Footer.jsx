@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import { brand, nav } from '../data/content'
+import { useContent } from '../i18n/LangContext'
 
 const SERVICES = ['engineering', 'intelligence', 'digital', 'academy']
 const toPath = (href) => {
@@ -8,6 +8,7 @@ const toPath = (href) => {
 }
 
 export default function Footer() {
+  const { brand, nav, t } = useContent()
   return (
     <footer className="footer">
       <div className="container">
@@ -18,24 +19,29 @@ export default function Footer() {
           </div>
           <div className="footer__cols">
             <div className="footer__col">
-              <h4>Divisions</h4>
+              <h4>{t.footer.divisions}</h4>
               {nav.slice(0, 4).map((n) => <Link key={n.href} to={toPath(n.href)}>{n.label}</Link>)}
             </div>
             <div className="footer__col">
-              <h4>Company</h4>
-              <Link to="/#team">Team</Link>
-              <Link to="/#contact">Contact</Link>
+              <h4>{t.footer.company}</h4>
+              <Link to="/#team">{t.footer.team}</Link>
+              <Link to="/#contact">{t.footer.contact}</Link>
             </div>
             <div className="footer__col">
-              <h4>Reach us</h4>
+              <h4>{t.footer.reach}</h4>
               <a href={`tel:${brand.phone.replace(/\s/g, '')}`}>{brand.phone}</a>
               <a href={`mailto:${brand.email}`}>{brand.email}</a>
-              <a href={`https://wa.me/${brand.whatsapp}`} target="_blank" rel="noreferrer">WhatsApp</a>
+              <a href={`https://wa.me/${brand.whatsapp}`} target="_blank" rel="noreferrer">{t.footer.whatsapp}</a>
+              {brand.instagram && (
+                <a href={brand.instagram} target="_blank" rel="noreferrer">
+                  {t.footer.instagram}{brand.instagramHandle ? ` ${brand.instagramHandle}` : ''}
+                </a>
+              )}
             </div>
           </div>
         </div>
         <div className="footer__bottom">
-          <span>© 2026 LWC Group (Pty) Ltd · Reg. 2026/653840/07</span>
+          <span>{t.footer.rights}</span>
           <span>{brand.regions} · {brand.languages}</span>
         </div>
       </div>

@@ -5,9 +5,11 @@ export const brand = {
   name: 'LWC GROUP',
   slogan: 'King of Engineering Solutions',
   tagline: 'We turn engineering, data and technology into practical solutions that deliver measurable results.',
-  email: 'jonathanlukwichi29@gmail.com',
+  email: 'lwcgroup30@gmail.com',
   phone: '+27 84 731 4600',
   whatsapp: '27847314600',
+  instagram: 'https://www.instagram.com/slukwichi',
+  instagramHandle: '@slukwichi',
   regions: 'South Africa · DRC',
   languages: 'English · Français',
 }

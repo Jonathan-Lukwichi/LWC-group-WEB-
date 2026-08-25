@@ -378,6 +378,33 @@ p{margin:0 0 15px}
 .footer__col a:hover{color:var(--gold-hi)}
 .footer__bottom{border-top:1px solid var(--line-2);padding-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--faint)}
 
+/* language toggle (EN | FR) */
+.langtoggle{display:inline-flex;align-items:center;gap:2px}
+.langtoggle__opt{font-family:var(--sans);font-weight:600;font-size:13px;letter-spacing:.06em;color:var(--dim);
+  background:none;border:0;cursor:pointer;min-width:34px;min-height:44px;padding:0 6px;display:inline-grid;place-items:center;
+  border-radius:4px;transition:color .25s;-webkit-tap-highlight-color:transparent}
+.langtoggle__opt.on{color:var(--gold-hi)}
+.langtoggle__opt:hover{color:var(--gold-hi)}
+.langtoggle__sep{color:var(--faint);font-size:12px;user-select:none}
+.nav__mobtools{display:flex;align-items:center;gap:2px}
+.langtoggle--desk{display:none}
+@media(min-width:900px) and (pointer:fine){
+  .nav__mobtools{display:none}
+  .langtoggle--desk{display:inline-flex}
+  .langtoggle--desk .langtoggle__opt{min-height:auto;padding:4px 6px;font-size:13px}
+}
+
+/* org contact row (email + Instagram) under the team */
+.orgcontact{display:flex;gap:20px 26px;flex-wrap:wrap;justify-content:center;align-items:center;margin-top:30px}
+.orgcontact a{display:inline-flex;gap:9px;align-items:center;min-height:44px;color:var(--ink);
+  font-family:var(--sans);font-size:14px;word-break:break-word}
+.orgcontact a:hover{color:var(--gold-hi)}
+.orgcontact svg{width:17px;height:17px;color:var(--gold);flex:none}
+
+/* fluid-text safety — longer French copy must wrap, never overlap cards/images */
+h1,h2,h3,h4,p,li,a,span{overflow-wrap:break-word}
+.lead,.dcard__t,.dcard__p,.fcard h3,.fcard p,.pillar h3,.pillar li,.pcard p,.pcard h3,.ccard h3{hyphens:auto}
+
 /* reveal */
 .reveal{opacity:0;transform:translateY(24px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
 .reveal.in{opacity:1;transform:none}
