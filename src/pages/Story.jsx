@@ -15,7 +15,7 @@ export default function Story() {
         <section className="beat beat--intro" id="top">
           <div className="container">
             <div className="beat__inner reveal">
-              <img className="story__emblem" src="/logo.png" alt="LWC Group" />
+              <img className="story__emblem" src="/logo-icon.png" alt="LWC Group" />
               <div className="story__brandline">{story.brandLine}</div>
               <h1 className="display beat__title">{story.introTitle}</h1>
               <p className="beat__p">{story.introSub}</p>

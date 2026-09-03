@@ -26,7 +26,7 @@ export default function Nav() {
     <header className={`nav ${scrolled ? 'scrolled' : ''}`}>
       <div className="container nav__inner">
         <Link className="nav__brand" to="/" onClick={() => setOpen(false)} aria-label="LWC Group home">
-          <span className="nav__badge"><img src="/logo.png" alt="LWC Group" /></span>
+          <span className="nav__badge"><img src="/logo-icon.png" alt="LWC Group" /></span>
           <span className="nav__wordmark">LWC GROUP</span>
         </Link>
 

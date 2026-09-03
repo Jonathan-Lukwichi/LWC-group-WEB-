@@ -14,7 +14,7 @@ export default function Footer() {
       <div className="container">
         <div className="footer__top">
           <div className="footer__brand">
-            <img src="/logo.png" alt="LWC Group" />
+            <img src="/logo-icon.png" alt="LWC Group" />
             <div className="footer__slogan">King of Engineering Solutions</div>
           </div>
           <div className="footer__cols">
